@@ -7,6 +7,7 @@ import com.pipedrive.preset.URL;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Description;
 import ru.yandex.qatools.allure.annotations.Title;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import static com.pipedrive.preset.PageObjectSupplier.$;
 import static com.pipedrive.preset.PageObjectSupplier.loadSiteUrl;
 
 @Title("Login with created user Functional tests ")
+@Description("Login with created user test")
 public class LoginWithRegisteredUserTest extends BaseTest{
 
     private static RegisteredUser registeredUser;
@@ -36,6 +38,7 @@ public class LoginWithRegisteredUserTest extends BaseTest{
 
     // Positive test
     @Title("Login with created user successful case")
+    @Description("Login with Login with created user successful case")
     @Test(dataProvider = "testDP")
     public void LoginWithRegisteredUser(RegisteredUser registeredUser){
         loadSiteUrl(URL.PROD)
