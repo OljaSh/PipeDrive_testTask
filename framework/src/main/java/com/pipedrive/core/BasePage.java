@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.logging.Logger;
+
 import static com.pipedrive.utils.PropertiesUtils.getLongValue;
 
 
@@ -19,6 +21,7 @@ public class BasePage {
     private WebDriver driver;
     private WebDriverWait wait;
 
+    private static final Logger LOGGER = Logger.getLogger(BasePage.class.getName());
 
     public BasePage (){
         driver = BaseTest.getDriver();
@@ -55,5 +58,23 @@ public class BasePage {
 
     public void selectValueFromDropDownList(By element, String text){
         new Select(findElement(element)).selectByValue(text);
+    }
+
+    public boolean isDisplayed(By element) {
+        try {
+            return findElement(element).isDisplayed();
+        } catch (Exception ignored) {
+            LOGGER.info("Unable to find " + element);
+            return false;
+        }
+    }
+
+    public boolean isDisplayedByCondition(By element) {
+        try {
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(element)).isDisplayed();
+        } catch (Exception ignored) {
+            LOGGER.info("Unable to find " + element);
+            return false;
+        }
     }
 }

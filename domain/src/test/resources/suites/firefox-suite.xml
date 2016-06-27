@@ -9,9 +9,9 @@
                     <include name="loginWithUser"/>
                 </methods>
             </class>-->
-            <class name="com.pipedrive.testcases.RegisterNewUser.RegisterNewUserTest">
+            <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginWithRegisteredUserTest">
                 <methods>
-                    <include name="loginWithUser"/>
+                    <include name="checkLocale"/>
                 </methods>
             </class>
         </classes>

@@ -1,15 +1,18 @@
 package com.pipedrive.pajeobject;
 
 import com.pipedrive.core.BasePage;
+import com.pipedrive.preset.LocaleLoader;
 import org.openqa.selenium.By;
 import ru.yandex.qatools.allure.annotations.Step;
+
+import java.util.stream.Stream;
 
 import static com.pipedrive.preset.PageObjectSupplier.$;
 
 /**
  * Created by oljashabanova on 18/06/16.
  */
-public class LoginPage  extends BasePage{
+public class LoginPage extends BasePage{
 
     private By inputEmail = By.id("login");
     private By inputPassword = By.id("password");
@@ -22,14 +25,18 @@ public class LoginPage  extends BasePage{
 
     private By selectboxLanguage = By.id("auth-language-picker");
 
+    private LocaleLoader labelsBundle;
 
+    public LoginPage() {
+        labelsBundle = new LocaleLoader("LabelsBundle");
+    }
 
     @Step("Set email = {0}")
     public LoginPage setRegisteredEmailAddress(String emailAddress){
         setText(inputEmail, emailAddress);
+        //labelsBundle.getValue("label.error.message");
         return this;
     }
-
 
     @Step("Enter password")
     public LoginPage setRegisteredPassword(String password){
@@ -48,5 +55,8 @@ public class LoginPage  extends BasePage{
       return getText(errorFormIncorrectEmailPassword);
     }
 
-
+    public boolean checkElementsVisibility() {
+        return Stream.of(inputEmail, inputPassword, buttonLogin)
+                .allMatch(this::isDisplayed);
+    }
 }
