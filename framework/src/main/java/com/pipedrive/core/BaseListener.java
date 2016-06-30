@@ -11,9 +11,7 @@ import java.util.logging.Logger;
 
 import static com.pipedrive.core.BaseTest.getDriver;
 
-/**
- * Author: Serhii Korol.
- */
+
 public class BaseListener implements IInvokedMethodListener, ITestListener {
 
     private static final Logger LOGGER = Logger.getLogger(BaseListener.class.getName());

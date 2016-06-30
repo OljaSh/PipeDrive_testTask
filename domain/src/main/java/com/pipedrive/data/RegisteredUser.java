@@ -7,8 +7,8 @@ public class RegisteredUser {
     private String password;
 
     public RegisteredUser(final String email, final String password){
-        this.email = "sh.olja@gmail.com";
-        this.password = "nalT5g8S";
+       this.email = email;
+       this.password = password;
     }
 
     public String getEmail() {

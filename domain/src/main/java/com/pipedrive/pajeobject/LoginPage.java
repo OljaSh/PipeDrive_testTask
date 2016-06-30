@@ -9,19 +9,24 @@ import java.util.stream.Stream;
 
 import static com.pipedrive.preset.PageObjectSupplier.$;
 
-/**
- * Created by oljashabanova on 18/06/16.
- */
+
 public class LoginPage extends BasePage{
 
     private By inputEmail = By.id("login");
     private By inputPassword = By.id("password");
-    private By buttonLogin = By.xpath(".//*[@id='login_form']/div[5]/button");  //className("submit-button id--login");
+    private By buttonLoginNegative = By.xpath(".//*[@id='login_form']/div[5]/button");
+    private By buttonLoginPositive = By.xpath(".//*[@id='login_form']/div[5]/button");
+
+
     private By checkboxRememberMe = By.id("remember");
     private By buttonLoginWithGoogle = By.className("btn-google-plus btn-link");
     private By buttonForgot = By.className("btn-link");
 
-    private By errorFormIncorrectEmailPassword = By.className("form_error");
+
+    private By textWarningIncorrectEmailOrPassword = By.className("form_error");
+    private By textWarningInvalidEmailAddress = By.xpath(".//*[@id='login_form']/div[2]/div[2]");
+    private By textWarningAddEmail = By.xpath(".//*[@id='login_form']/div[2]/div[1]");
+    private By textWarningAddPassword = By.xpath(".//*[@id='login_form']/div[3]/div");
 
     private By selectboxLanguage = By.id("auth-language-picker");
 
@@ -44,19 +49,42 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-    @Step("Clict on Login button")
-    public HomePage clickButtonLogin(){
-        click(buttonLogin);
+    @Step("Click on Login button")
+    public LoginPage clickButtonLoginNegative(){
+        click(buttonLoginNegative);
+        return this;
+    }
+
+    @Step("Click on Login button")
+    public HomePage clickButtonLoginPositive(){
+        click(buttonLoginPositive);
         return $(HomePage.class);
     }
 
-    @Step("Get error message")
-    public  String gerErrorMessage() {
-      return getText(errorFormIncorrectEmailPassword);
+
+    @Step("Get warning message that password or email is incorrect= {0}")
+    public String  getWarningMessageIncorrectEmailOrPassword(){
+
+        return getText(textWarningIncorrectEmailOrPassword);
+    }
+
+    @Step("Get warning message that password format is incorrect= {0}")
+    public String  getWarningMessageInvalidEmailAddress(){
+        return getText(textWarningInvalidEmailAddress);
+    }
+
+    @Step("Get warning Add email")
+    public String getWarningMessageAddEmail(){
+        return getText(textWarningAddEmail);
+    }
+
+    @Step("Get warning Add password")
+    public  String getWarningMessageAddPassword(){
+        return getText(textWarningAddPassword);
     }
 
     public boolean checkElementsVisibility() {
-        return Stream.of(inputEmail, inputPassword, buttonLogin)
+        return Stream.of(inputEmail, inputPassword, buttonLoginPositive)
                 .allMatch(this::isDisplayed);
     }
 }

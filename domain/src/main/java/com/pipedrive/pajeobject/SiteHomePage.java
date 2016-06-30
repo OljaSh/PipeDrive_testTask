@@ -13,6 +13,10 @@ public class SiteHomePage extends BasePage {
 
     private By buttonSignUp = By.className("header__navigation__signup");
 
+    private By selectLanguage = By.xpath(".//*[@id='body']/div/div/div[2]/footer/div[1]/div[3]/div/select");  //className("language-picker__select-box");
+
+
+
 
 
     @Step("Click on login Button")
@@ -25,6 +29,12 @@ public class SiteHomePage extends BasePage {
     public SignUpPage clickSignUpButton(){
         click(buttonSignUp);
         return $(SignUpPage.class);
+    }
+
+    @Step("Select language = {0}")
+    public SiteHomePage selectLanguage(String language){
+        selectValueFromDropDownList(selectLanguage, String.valueOf(language));
+        return this;
     }
 
 }

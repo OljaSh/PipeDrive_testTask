@@ -60,6 +60,10 @@ public class BasePage {
         new Select(findElement(element)).selectByValue(text);
     }
 
+
+
+
+
     public boolean isDisplayed(By element) {
         try {
             return findElement(element).isDisplayed();
@@ -77,4 +81,6 @@ public class BasePage {
             return false;
         }
     }
+
+
 }

@@ -11,7 +11,7 @@ public class SignUpPage extends BasePage {
     private By inputCompanyName = By.id("company_name");
     private By inputYourEmail = By.id("email");
     private By inputPassword = By.id("password");
-    private By selectTeamSize = By.className("auth-activity-icon");
+    private By selectTeamSize = By.xpath(".//*[@id='register_form']/div[5]/div/select");
     private By selectCompanyIndustry = By.name("company_industry");
     private By inputPromoCode = By.className("promo-code-link");
     private By buttonSignUpFree = By.id("register_button");
