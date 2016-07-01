@@ -15,9 +15,12 @@ public class HomePage extends BasePage {
 
     private By labelUserName = By.className("name"); //xpath("html/body/nav/div[1]/a/div/span[1]");  //className("name");
 
-    private By buttonLogOut = By.xpath(".//*[@id='login_form']/div[2]/div[1]");
+  //  private By buttonLogOut = By.xpath(".//*[@id='login_form']/div[2]/div[1]");
     private By buttonProfileDropDownMenu = By.xpath("html/body/nav/div[1]/a");
     private By dropDownMenu = By.xpath("html/body/div[8]/ul");
+    private By buttonLogOut = By.linkText("Log out");   //By.tagName("('LI')[5]");
+
+
 
 
 

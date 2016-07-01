@@ -26,8 +26,8 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 
 	private static RegisteredUser registeredUser;
 
-	@DataProvider(name = "positiveDP")
-	public static Iterator<Object[]> dataProvider() {
+    @DataProvider(name = "positiveDP")
+	public static Iterator<Object[]> positiveDP() {
 		if (registeredUser == null) {
 			registeredUser = new RegisteredUser("sh.olja@gmail.com", "nalT5g8S");
 		}
@@ -36,19 +36,19 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 		return output.iterator();
 	}
 
+
 	@DataProvider(name = "negativeDP")
-	public static Iterator<Object[]> provideNegativeData() {
+	public static Iterator<Object[]> negariveDP() {
 		//new SignUpForm();
 		return Stream.of(new RegisteredUser("test@test.com", "nalT5g8S"),
-				new RegisteredUser("sh.olja@gmail.com", "pass")
-				/*new RegisteredUser("", "")*/)
+				new RegisteredUser("sh.olja@gmail.com", "pass"))
 				.map(user -> new Object[]{user})
 				.collect(toList())
 				.iterator();
 	}
 
     @DataProvider(name = "incorrectEmailFormatDP")
-    public static Iterator<Object[]> providerIncorrectEmailFormat() {
+    public static Iterator<Object[]> providerIncorrectEmailFormatDP() {
         return Stream.of(new RegisteredUser("sh.olja", "nalT5g8S"),
                 new RegisteredUser("@gmail.com", "nalT5g8S"),
                 new RegisteredUser("sh.olja@", "nalT5g8S"),
@@ -58,19 +58,23 @@ public class LoginWithRegisteredUserTest extends BaseTest {
                 .iterator();
     }
 
-	@DataProvider(name = "emptyEmailAndPasswordFields")
-	public static Iterator<Object[]> providerEmptyFields() {
-		if (registeredUser == null) {
-			registeredUser = new RegisteredUser(" ", " ");
-		}
-		ArrayList<Object[]> output = new ArrayList<>();
-		output.add(new Object[]{registeredUser});
-		return output.iterator();
-	}
-	// Positive test
+//	@DataProvider(name = "emptyEmailAndPasswordFieldsDP")
+//	public static Iterator<Object[]> providerEmptyFieldsDP() {
+//		if (registeredUser == null) {
+//			registeredUser = new RegisteredUser(" ", " ");
+//		}
+//		ArrayList<Object[]> output = new ArrayList<>();
+//		output.add(new Object[]{registeredUser});
+//		return output.iterator();
+//	}
+
+///////////////////////// TESTS //////////////////////////
+
+// Positive test
+
 	@Title("Login with created user successful case")
 	@Description("Login with Login with created user successful case")
-	@Test(dataProvider = "positiveDP")
+	@Test(dataProvider = "positiveDP", priority = 4)
 	public void loginWithRegisteredUser(RegisteredUser registeredUser) {
 		loadSiteUrl(URL.PROD)
 				.selectLanguage("en")
@@ -82,12 +86,14 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 		Assert.assertEquals($(HomePage.class).getUserName(), "Olja");
 		$(HomePage.class).clickProfileDropDownMenu().clickLogOutButton();
 
+
 	}
 
+// Negative tests
 
     @Title("Login with invalid user email or password")
     @Description("Login with invalid user email or password")
-	@Test(priority=1, dataProvider = "negativeDP", enabled = false)
+	@Test(priority=1, dataProvider = "negativeDP", enabled = true)
 	public void loginWithInvalidCredentials(RegisteredUser registeredUser) {
 		loadSiteUrl(URL.PROD)
 				.selectLanguage("en")
@@ -102,7 +108,7 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 
     @Title("Login with invalid  email")
     @Description("Login with invalid  email")
-    @Test(priority=2, dataProvider = "incorrectEmailFormatDP", enabled = false)
+    @Test(priority=2, dataProvider = "incorrectEmailFormatDP", enabled = true)
     public void loginWithIncorrectEmailFormat(RegisteredUser registeredUser) {
         loadSiteUrl(URL.PROD)
 				.selectLanguage("en")
@@ -116,8 +122,8 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 
 	@Title("Login with empty email or password")
 	@Description("Login with empty email or password")
-	@Test(priority=3, dataProvider = "emptyEmailAndPasswordFields",  enabled = false)
-	public void loginWithEmptyemailOrPassword(RegisteredUser registeredUser) {
+	@Test(priority=3, enabled = true)
+	public void loginWithEmptyemailOrPassword() {
 		loadSiteUrl(URL.PROD)
 				.selectLanguage("en")
 				.clickLoginButton()
