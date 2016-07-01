@@ -2,8 +2,6 @@ package com.pipedrive.pajeobject;
 
 import com.pipedrive.core.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.pipedrive.preset.PageObjectSupplier.$;
@@ -21,11 +19,7 @@ public class HomePage extends BasePage {
     private By buttonProfileDropDownMenu = By.xpath("html/body/nav/div[1]/a");
     private By dropDownMenu = By.xpath("html/body/div[8]/ul");
 
-   /* @Step("Click Logout button")
-    public HomePage clickLogOutButton(){
-        click(buttonLogOut);
-        return this;
-    }*/
+
 
     @Step("Select Profile DropDown Menu")
     public HomePage clickProfileDropDownMenu(){
@@ -38,9 +32,5 @@ public class HomePage extends BasePage {
         click(buttonLogOut);
         return $(LogOutPage.class);
     }
-
-    public Select select = new Select((WebElement) buttonLogOut);
-
-    //@Step("Press on User Profile drop down menu")
 
 }

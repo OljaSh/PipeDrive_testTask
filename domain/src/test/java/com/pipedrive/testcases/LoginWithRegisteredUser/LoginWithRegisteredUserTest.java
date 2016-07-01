@@ -80,7 +80,7 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 				.clickButtonLoginPositive();
 
 		Assert.assertEquals($(HomePage.class).getUserName(), "Olja");
-		//$(HomePage.class).clickProfileDropDownMenu().clickLogOutButton();
+		$(HomePage.class).clickProfileDropDownMenu().clickLogOutButton();
 
 	}
 
