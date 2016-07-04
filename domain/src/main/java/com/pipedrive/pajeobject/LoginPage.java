@@ -30,6 +30,15 @@ public class LoginPage extends BasePage{
 
     private By selectboxLanguage = By.id("auth-language-picker");
 
+    ///----------
+    private By textPageTitle = By.className("auth-title page-title secure");
+    private By textEmail = By.xpath(".//*[@id='login_form']/div[2]/label");
+    private By textPassword = By.xpath(".//*[@id='login_form']/div[3]/label");
+    private By textRememberMe = By.xpath(".//*[@id='login_form']/div[4]/label");
+    private By textButtonForgot = By.xpath(".//*[@id='login_form']/div[3]/small/a");
+    private By textButtonLognIn = By.xpath(".//*[@id='login_form']/div[5]/button");
+
+
     private LocaleLoader labelsBundle;
 
     public LoginPage() {
@@ -83,8 +92,9 @@ public class LoginPage extends BasePage{
         return getText(textWarningAddPassword);
     }
 
+
     public boolean checkElementsVisibility() {
-        return Stream.of(inputEmail, inputPassword, buttonLoginPositive)
+        return Stream.of(textPageTitle, textEmail, textPassword, textRememberMe, textButtonForgot, textButtonLognIn)
                 .allMatch(this::isDisplayed);
     }
 }

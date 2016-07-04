@@ -3,9 +3,7 @@ package com.pipedrive.preset;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-/**
- * Created by Serhii Korol
- */
+
 public class LocaleLoader {
 
 	private ResourceBundle bundle;
