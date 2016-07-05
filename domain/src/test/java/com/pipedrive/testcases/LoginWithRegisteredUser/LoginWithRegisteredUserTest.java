@@ -58,15 +58,6 @@ public class LoginWithRegisteredUserTest extends BaseTest {
                 .iterator();
     }
 
-//	@DataProvider(name = "emptyEmailAndPasswordFieldsDP")
-//	public static Iterator<Object[]> providerEmptyFieldsDP() {
-//		if (registeredUser == null) {
-//			registeredUser = new RegisteredUser(" ", " ");
-//		}
-//		ArrayList<Object[]> output = new ArrayList<>();
-//		output.add(new Object[]{registeredUser});
-//		return output.iterator();
-//	}
 
 ///////////////////////// TESTS //////////////////////////
 
@@ -134,58 +125,5 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 		Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_EMAIL.toString());
 		Assert.assertEquals($(LoginPage.class).getWarningMessageAddPassword(), Error.EMPTY_PASSWORD.toString());
 	}
-
-/*
-	@Test
-	public void checkLoginPageElementsVisibility() {
-		loadSiteUrl(URL.PROD)
-				.clickLoginButton();
-
-		Assert.assertEquals($(LoginPage.class).checkElementsVisibility(), true);
-	}
-
-	@Test
-	public void checkLocale() {
-		Locale[] supportedLocates = {
-				Locale.GERMAN,
-				Locale.ENGLISH
-		};
-
-		for (Locale locale : supportedLocates) {
-			displayValue(locale, "button.log.in");
-		}
-	}
-
-	private void displayValue(Locale locale, String key) {
-		ResourceBundle labels = ResourceBundle.getBundle("LabelsBundle", locale);
-		String value = labels.getString(key);
-		System.out.println("Locale = " + locale.toString() + ", " +
-				"key = " + key + ", " +
-				"value = " + value);
-	}*/
-
-	//Negative test, incorrect user name
-	/*@Title("Login with created user incorrect user name")
-	@Test(dataProvider = "testDP")
-    public void LoginWithRegisteredUser(RegisteredUser registeredUser){
-        loadSiteUrl(URL.PROD)
-                .clickLoginButton()
-                .setRegisteredEmailAddress(registeredUser.getEmail())
-                .setRegisteredPassword(registeredUser.getPassword())
-                .clickButtonLogin();
-        Assert.assertEquals($(HomePage.class).getUserName(), "Incorrect email or password");
-    }*/
-
-	//Negative test, incorrect password
-    /*@Title("Login with created user incorrect password")
-    @Test(dataProvider = "testDP")
-    public void LoginWithRegisteredUser(RegisteredUser registeredUser){
-        loadSiteUrl(URL.PROD)
-                .clickLoginButton()
-                .setRegisteredEmailAddress(registeredUser.getEmail())
-                .setRegisteredPassword(registeredUser.getPassword())
-                .clickButtonLogin();
-        Assert.assertEquals($(HomePage.class).getUserName(), "Incorrect email or password");
-    }*/
 
 }

@@ -15,13 +15,17 @@ import static com.pipedrive.preset.PageObjectSupplier.loadSiteUrl;
 
 public class LoginPageElementVisibilityTest extends BaseTest{
 
-    @Test
+  @Test
     public void checkLoginPageElementsVisibility() {
         loadSiteUrl(URL.PROD)
                 .clickLoginButton();
 
         Assert.assertEquals($(LoginPage.class).checkElementsVisibility(), true);
+
+
     }
+
+
 
     @Test
     public void checkLocale() {
