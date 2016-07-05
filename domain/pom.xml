@@ -117,9 +117,10 @@
                 <artifactId>allure-maven-plugin</artifactId>
                 <version>2.5</version>
                 <configuration>
+                    <version>1.4.24.RC2</version>
                     <reportDirectory>${project.basedir}/../reports</reportDirectory>
-                  <properties>
-                       <allure.issues.tracker.pattern>https://url/browse/%s</allure.issues.tracker.pattern>
+                    <properties>
+                        <allure.issues.tracker.pattern>https://url/browse/%s</allure.issues.tracker.pattern>
                         <allure.tests.management.pattern>https://url/browse/%s</allure.tests.management.pattern>
                     </properties>
                 </configuration>

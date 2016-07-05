@@ -8,7 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +25,7 @@ public class BaseTest {
         return WEB_DRIVER_CONTAINER.get();
     }
 
-    @BeforeClass
+    @BeforeMethod
     //@Parameters({"browser"})
     public void setUp(ITestContext context) {
         String browser = context.getCurrentXmlTest().getAllParameters().get("browser");
@@ -45,7 +47,7 @@ public class BaseTest {
         WEB_DRIVER_CONTAINER.set(driver);
     }
 
-    @AfterClass
+    @AfterMethod
     public void tearDown(){
         if (getDriver() != null){
             getDriver().quit();
