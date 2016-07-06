@@ -12,10 +12,13 @@ import static com.pipedrive.preset.PageObjectSupplier.$;
 
 public class LoginPage extends BasePage{
 
+    private By labelEmail = By.cssSelector("label[for='login']");
+
     private By inputEmail = By.id("login");
     private By inputPassword = By.id("password");
-    private By buttonLoginNegative = By.xpath(".//*[@id='login_form']/div[5]/button");
-    private By buttonLoginPositive = By.xpath(".//*[@id='login_form']/div[5]/button");
+    /*private By buttonLoginNegative = By.xpath("./*//*[@id='login_form']/div[5]/button");
+    private By buttonLoginPositive = By.xpath("./*//*[@id='login_form']/div[5]/button");*/
+    private By buttonLogin = By.xpath(".//*[@id='login_form']/div[5]/button");
 
 
     private By checkboxRememberMe = By.id("remember");
@@ -45,6 +48,14 @@ public class LoginPage extends BasePage{
         labelsBundle = new LocaleLoader("LabelsBundle");
     }
 
+    public String getEmailLabel() {
+        return getText(labelEmail);
+    }
+
+    public String getExpectedEmailLabel() {
+        return labelsBundle.getValue("label.username");
+    }
+
     @Step("Set email = {0}")
     public LoginPage setRegisteredEmailAddress(String emailAddress){
         setText(inputEmail, emailAddress);
@@ -58,15 +69,15 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-    @Step("Click on Login button")
+    /*@Step("Click on Login button")
     public LoginPage clickButtonLoginNegative(){
         click(buttonLoginNegative);
         return this;
-    }
+    }*/
 
     @Step("Click on Login button")
-    public HomePage clickButtonLoginPositive(){
-        click(buttonLoginPositive);
+    public HomePage clickButtonLogin(){
+        click(buttonLogin);
         return $(HomePage.class);
     }
 

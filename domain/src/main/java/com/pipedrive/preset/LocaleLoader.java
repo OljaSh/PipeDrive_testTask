@@ -9,7 +9,7 @@ public class LocaleLoader {
 	private ResourceBundle bundle;
 
 	public LocaleLoader(String bundle) {
-		this.bundle = ResourceBundle.getBundle(bundle, Locale.getDefault());
+		this.bundle = ResourceBundle.getBundle(bundle, Locale.ENGLISH);
 	}
 
 	public String getValue(String key) {
