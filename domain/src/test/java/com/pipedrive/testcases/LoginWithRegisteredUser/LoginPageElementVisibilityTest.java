@@ -2,12 +2,11 @@ package com.pipedrive.testcases.LoginWithRegisteredUser;
 
 
 import com.pipedrive.core.BaseTest;
-import com.pipedrive.data.RegisteredUser;
-import com.pipedrive.pajeobject.HomePage;
 import com.pipedrive.pajeobject.LoginPage;
 import com.pipedrive.preset.URL;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Description;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -17,7 +16,7 @@ import static com.pipedrive.preset.PageObjectSupplier.loadSiteUrl;
 
 public class LoginPageElementVisibilityTest extends BaseTest {
 
-	@Test
+	/*@Test
 	public void checkLoginPageElementsVisibility() {
 		loadSiteUrl(URL.PROD)
 				.clickLoginButton();
@@ -25,20 +24,29 @@ public class LoginPageElementVisibilityTest extends BaseTest {
 		Assert.assertEquals($(LoginPage.class).checkElementsVisibility(), true);
 
 
-	}
+	}*/
 
-	@Test
+	@Description("Check Labels on Login page")
+	@Test (enabled = false)
 	public void checkLabel() {
 		loadSiteUrl(URL.PROD)
-				.selectLanguage("en")
+				.selectLanguage("de")
 				.clickLoginButton();
 
-		System.out.println($(LoginPage.class).getEmailLabel());
+		/*System.out.println($(LoginPage.class).getEmailLabel());
 		System.out.println($(LoginPage.class).getExpectedEmailLabel());
-		Assert.assertEquals($(LoginPage.class).getEmailLabel(), $(LoginPage.class).getExpectedEmailLabel());
+		System.out.println($(LoginPage.class).getPasswordLabel());
+		System.out.println($(LoginPage.class).getExpectedPasswordLabel());*/
+
+		Assert.assertEquals($(LoginPage.class).getPageTitleValue(), $(LoginPage.class).getExpectedPageTitleLabel());
+		Assert.assertEquals($(LoginPage.class).getEmailValue(), $(LoginPage.class).getExpectedEmailLabel());
+		Assert.assertEquals($(LoginPage.class).getPasswordValue(), $(LoginPage.class).getExpectedPasswordLabel());
+		Assert.assertEquals($(LoginPage.class).getForgotValue(), $(LoginPage.class).getExpectedForgotLabel());
+		Assert.assertEquals($(LoginPage.class).getRememberMeValue(), $(LoginPage.class).getExpectedRememberMeLabel());
+		Assert.assertEquals($(LoginPage.class).getLogInButtonValue(), $(LoginPage.class).getExpectedButtonLogInLabel());
 	}
 
-	@Test
+	@Test (enabled = true)
 	public void checkLocale() {
 		Locale[] supportedLocates = {
 				Locale.GERMAN,
@@ -47,10 +55,10 @@ public class LoginPageElementVisibilityTest extends BaseTest {
 		};
 
 		for (Locale locale : supportedLocates) {
-			displayValue(locale, "button.log.in");
+			displayValue(locale, "label.page.title");
 		}
 
-		displayValue(Locale.getDefault(), "button.log.in");
+		displayValue(Locale.getDefault(), "label.page.title");
 	}
 
 	private void displayValue(Locale locale, String key) {

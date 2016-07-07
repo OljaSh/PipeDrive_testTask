@@ -5,14 +5,10 @@ import com.pipedrive.preset.LocaleLoader;
 import org.openqa.selenium.By;
 import ru.yandex.qatools.allure.annotations.Step;
 
-import java.util.stream.Stream;
-
 import static com.pipedrive.preset.PageObjectSupplier.$;
 
 
 public class LoginPage extends BasePage{
-
-    private By labelEmail = By.cssSelector("label[for='login']");
 
     private By inputEmail = By.id("login");
     private By inputPassword = By.id("password");
@@ -34,28 +30,18 @@ public class LoginPage extends BasePage{
     private By selectboxLanguage = By.id("auth-language-picker");
 
     ///----------
-    private By textPageTitle = By.className("auth-title page-title secure");
-    private By textEmail = By.xpath(".//*[@id='login_form']/div[2]/label");
-    private By textPassword = By.xpath(".//*[@id='login_form']/div[3]/label");
-    private By textRememberMe = By.xpath(".//*[@id='login_form']/div[4]/label");
-    private By textButtonForgot = By.xpath(".//*[@id='login_form']/div[3]/small/a");
-    private By textButtonLognIn = By.xpath(".//*[@id='login_form']/div[5]/button");
+    private By labeltPageTitle = By.xpath(".//*[@id='login_form']/div[1]/h1");
+    //private By labelEmail = By.xpath(".//*[@id='login_form']/div[2]/label");
+    private By labelPassword = By.xpath(".//*[@id='login_form']/div[3]/label");
+    private By labelRememberMe = By.xpath(".//*[@id='login_form']/div[4]/label");
+    private By labelButtonForgot = By.xpath(".//*[@id='login_form']/div[3]/small/a");
+    private By labelButtonLognIn = By.xpath(".//*[@id='login_form']/div[5]/button");
+
+    private By labelEmail = By.cssSelector("label[for='login']");
 
 
-    private LocaleLoader labelsBundle;
 
-    public LoginPage() {
-        labelsBundle = new LocaleLoader("LabelsBundle");
-    }
-
-    public String getEmailLabel() {
-        return getText(labelEmail);
-    }
-
-    public String getExpectedEmailLabel() {
-        return labelsBundle.getValue("label.username");
-    }
-
+    //---------------------------------------------
     @Step("Set email = {0}")
     public LoginPage setRegisteredEmailAddress(String emailAddress){
         setText(inputEmail, emailAddress);
@@ -69,11 +55,6 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-    /*@Step("Click on Login button")
-    public LoginPage clickButtonLoginNegative(){
-        click(buttonLoginNegative);
-        return this;
-    }*/
 
     @Step("Click on Login button")
     public HomePage clickButtonLogin(){
@@ -104,8 +85,78 @@ public class LoginPage extends BasePage{
     }
 
 
-    public boolean checkElementsVisibility() {
+    /*public boolean checkElementsVisibility() {
         return Stream.of(textPageTitle, textEmail, textPassword, textRememberMe, textButtonForgot, textButtonLognIn)
                 .allMatch(this::isDisplayed);
+    }*/
+
+    //-------------------
+
+
+    private LocaleLoader labelsBundle;
+
+    public LoginPage() {
+        labelsBundle = new LocaleLoader("LabelsBundle");
     }
+
+    //--------------------
+    public String getPageTitleValue(){
+        return getText(labeltPageTitle);
+
+    }
+
+    @Step("Get Page Label")
+    public String getExpectedPageTitleLabel(){
+        return labelsBundle.getValue("label.page.title");
+    }
+
+    public String getEmailValue() {
+        return getText(labelEmail);
+
+    }
+
+    @Step("Get User name Label")
+    public String getExpectedEmailLabel() {
+        return labelsBundle.getValue("label.username");
+    }
+
+
+    public String getPasswordValue(){
+        return getText(labelPassword);
+    }
+
+    @Step("Get password Label")
+    public String getExpectedPasswordLabel(){
+        return labelsBundle.getValue("label.password");
+    }
+
+    public String getForgotValue(){
+        return getText(labelButtonForgot);
+    }
+
+    @Step("Get Forgot? button label")
+    public String getExpectedForgotLabel(){
+        return labelsBundle.getValue("label.forgot");
+    }
+
+    public String getRememberMeValue(){
+        return getText(labelRememberMe);
+    }
+
+    @Step("Get Remember me Labael")
+    public String getExpectedRememberMeLabel(){
+        return  labelsBundle.getValue("label.remember.me");
+    }
+
+    public String getLogInButtonValue(){
+        return  getText(labelButtonLognIn);
+    }
+
+    @Step("Get Log in button Label")
+    public String getExpectedButtonLogInLabel(){
+        return  labelsBundle.getValue("label.button.log.in");
+    }
+
+
+
 }
