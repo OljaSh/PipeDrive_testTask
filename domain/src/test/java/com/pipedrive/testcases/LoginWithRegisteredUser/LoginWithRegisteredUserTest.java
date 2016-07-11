@@ -37,32 +37,12 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 	}
 
 
-	@DataProvider(name = "negativeDP")
-	public static Iterator<Object[]> negariveDP() {
-		//new SignUpForm();
-		return Stream.of(new RegisteredUser("test@test.com", "nalT5g8S"),
-				new RegisteredUser("sh.olja@gmail.com", "pass"),
-				new RegisteredUser("sh.olja", "nalT5g8S"),
-				new RegisteredUser("@gmail.com", "nalT5g8S"),
-				new RegisteredUser("sh.olja@", "nalT5g8S"),
-				new RegisteredUser(" ", " "))
-				.map(user -> new Object[]{user})
-				.collect(toList())
-				.iterator();
-	}
-
-	/*
-	* 1. Should be a single generic locator
-	* 2. Email address validness should be checked by browser natively
-	* 3. Error messages should be localized
-	* 4. It's insecure to display specific error messages linked with particular fields
-	* */
-
-    @DataProvider(name = "incorrectEmailFormatDP")
-    public static Iterator<Object[]> providerIncorrectEmailFormatDP() {
+    @DataProvider(name = "negativeDP")
+    public static Iterator<Object[]> negariveDP() {
         return Stream.of(new RegisteredUser("sh.olja", "nalT5g8S"),
                 new RegisteredUser("@gmail.com", "nalT5g8S"),
                 new RegisteredUser("sh.olja@", "nalT5g8S"),
+				new RegisteredUser("sh.olja@gmail.com", "pass"),
 				new RegisteredUser(" ", " "),
 				new RegisteredUser("", ""))
                 .map(user -> new Object[]{user})
@@ -94,8 +74,8 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 
 // Negative tests
 
-    @Title("Login with invalid user email or password")
-    @Description("Login with invalid user email or password")
+    @Title("Negative tests")
+    @Description("Negative test with incorrect user name/password/incorrect format/spase/empty fields value")
 	@Test(priority=1, dataProvider = "negativeDP")
 	public void loginWithInvalidCredentials(RegisteredUser registeredUser) {
 		loadSiteUrl(URL.PROD)
@@ -106,35 +86,6 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 				.clickButtonLogin();
 
 		Assert.assertEquals($(LoginPage.class).getWarningMessageIncorrectEmailOrPassword(), Error.INCORRECT_EMAIL_OR_PASSWORD.toString());
-	}
-
-    @Title("Login with invalid  email")
-    @Description("Login with invalid  email")
-    @Test(priority=2, dataProvider = "incorrectEmailFormatDP", enabled = true)
-    public void loginWithIncorrectEmailFormat(RegisteredUser registeredUser) {
-        loadSiteUrl(URL.PROD)
-				.selectLanguage("en")
-                .clickLoginButton()
-                .setRegisteredEmailAddress(registeredUser.getEmail())
-                .setRegisteredPassword(registeredUser.getPassword())
-                .clickButtonLogin();
-
-        Assert.assertEquals($(LoginPage.class).getWarningMessageInvalidEmailAddress(), Error.INCORRECT_EMAIL_FORMAT.toString());
-    }
-
-	@Title("Login with empty email or password")
-	@Description("Login with empty email or password")
-	@Test(priority=3, enabled = true)
-	public void loginWithEmptyemailOrPassword() {
-		loadSiteUrl(URL.PROD)
-				.selectLanguage("en")
-				.clickLoginButton()
-				//.setRegisteredEmailAddress(registeredUser.getEmail())
-				//.setRegisteredPassword(registeredUser.getPassword())
-				.clickButtonLogin();
-
-		Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_EMAIL.toString());
-		Assert.assertEquals($(LoginPage.class).getWarningMessageAddPassword(), Error.EMPTY_PASSWORD.toString());
 	}
 
 }

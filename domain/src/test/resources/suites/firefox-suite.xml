@@ -4,16 +4,16 @@
     <test name="RegisterTest">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginPageElementVisibilityTest">
+            <!--<class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginPageElementVisibilityTest">
                 <methods>
-                    <include name="loginWithUser"/>
-                </methods>
-            </class>
-         <!--   <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginWithRegisteredUserTest">
-                <methods>
-                    <include name="checkLabel"/>
+                    <include name="checkLabel"/> &lt;!&ndash;<include name="checkLocale"/>&ndash;&gt;
                 </methods>
             </class>-->
+         <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginWithRegisteredUserTest">
+               <!-- <methods>
+                    <include name="checkLabel"/>
+                </methods>-->
+            </class>
         </classes>
     </test>
 </suite>

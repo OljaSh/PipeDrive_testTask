@@ -1,2 +1,22 @@
-1. Not all error messages are translated
-   Login with increect email or password
+----------Log in page-------------
+
+1. It's insecure to display specific error messages linked with particular fields
+   There should be be a single generic locator
+
+1a. Should be a single generic locator
+
+2. Email address validness should be checked by browser natively
+
+3. Not all error messages are localised
+   Login with incorrect email or password
+
+4. Currently there are several error for the same case, but one from them is hidden
+   <div class="form_error">Incorrect email or password</div>
+   <div class="js_form_error field-empty" style="display: none;">Please add your password</div>
+
+   <div class="js_form_error field-empty" style="display: none;">Please add your email</div>
+   <div class="js_form_error field-valid" style="display: inline-block;">Please add a valid email address</div>
+
+5. Previous errors not cleared
+
+

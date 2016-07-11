@@ -49,7 +49,7 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-    @Step("Enter password")
+    @Step("Enter password = {0}")
     public LoginPage setRegisteredPassword(String password){
         setText(inputPassword, password);
         return this;
@@ -63,13 +63,13 @@ public class LoginPage extends BasePage{
     }
 
 
-    @Step("Get warning message that password or email is incorrect= {0}")
+    @Step("Get warning message that password or email is incorrect")
     public String  getWarningMessageIncorrectEmailOrPassword(){
 
         return getText(textWarningIncorrectEmailOrPassword);
     }
 
-    @Step("Get warning message that password format is incorrect= {0}")
+    @Step("Get warning message that password format is incorrect")
     public String  getWarningMessageInvalidEmailAddress(){
         return getText(textWarningInvalidEmailAddress);
     }
@@ -94,6 +94,7 @@ public class LoginPage extends BasePage{
 
 
     private LocaleLoader labelsBundle;
+
 
     public LoginPage() {
         labelsBundle = new LocaleLoader("LabelsBundle");
