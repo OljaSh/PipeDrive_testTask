@@ -5,6 +5,8 @@ import com.pipedrive.preset.LocaleLoader;
 import org.openqa.selenium.By;
 import ru.yandex.qatools.allure.annotations.Step;
 
+import java.util.logging.Logger;
+
 import static com.pipedrive.preset.PageObjectSupplier.$;
 
 
@@ -39,6 +41,7 @@ public class LoginPage extends BasePage{
 
     private By labelEmail = By.cssSelector("label[for='login']");
 
+    private static final Logger LOGGER = Logger.getLogger(LoginPage.class.getName());
 
 
     //---------------------------------------------
@@ -97,7 +100,7 @@ public class LoginPage extends BasePage{
 
 
     public LoginPage() {
-        labelsBundle = new LocaleLoader("LabelsBundle");
+        labelsBundle = new LocaleLoader("LabelsBundle", getCurrentLocale());
     }
 
     //--------------------
@@ -118,7 +121,9 @@ public class LoginPage extends BasePage{
 
     @Step("Get User name Label")
     public String getExpectedEmailLabel() {
-        return labelsBundle.getValue("label.username");
+        String value = labelsBundle.getValue("label.username");
+        LOGGER.info(value);
+        return value;
     }
 
 
