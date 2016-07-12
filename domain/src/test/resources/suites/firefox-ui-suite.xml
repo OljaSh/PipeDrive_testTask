@@ -6,7 +6,7 @@
         <classes>
             <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginPageElementVisibilityTest">
                 <methods>
-                    <include name="checkLocale"/>
+                    <include name="checkLabelsOnLoginPage"/>
                 </methods>
             </class>
         </classes>

@@ -11,32 +11,25 @@ import org.testng.annotations.Test;
 import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.stream.Stream;
 
 import static com.pipedrive.preset.PageObjectSupplier.$;
 import static com.pipedrive.preset.PageObjectSupplier.loadSiteUrl;
 
 public class LoginPageElementVisibilityTest extends BaseTest {
 
-
 	//@Description("Check Labels on Login page")
 	@Test
 	public void checkLabelsOnLoginPage() {
 		loadSiteUrl(URL.PROD)
-				.selectLanguage(Language.RUSSIAN)
+				.selectLanguage(Language.ESTONIAN)
 				.clickLoginButton();
 
-		System.out.println($(LoginPage.class).getEmailValue());
-		System.out.println($(LoginPage.class).getExpectedEmailLabel());
-		System.out.println($(LoginPage.class).getPasswordValue());
-		System.out.println($(LoginPage.class).getExpectedPasswordLabel());
-
-		/*Assert.assertEquals($(LoginPage.class).getPageTitleValue(), $(LoginPage.class).getExpectedPageTitleLabel());
+		Assert.assertEquals($(LoginPage.class).getPageTitleValue(), $(LoginPage.class).getExpectedPageTitleLabel());
 		Assert.assertEquals($(LoginPage.class).getEmailValue(), $(LoginPage.class).getExpectedEmailLabel());
 		Assert.assertEquals($(LoginPage.class).getPasswordValue(), $(LoginPage.class).getExpectedPasswordLabel());
 		Assert.assertEquals($(LoginPage.class).getForgotValue(), $(LoginPage.class).getExpectedForgotLabel());
 		Assert.assertEquals($(LoginPage.class).getRememberMeValue(), $(LoginPage.class).getExpectedRememberMeLabel());
-		Assert.assertEquals($(LoginPage.class).getLogInButtonValue(), $(LoginPage.class).getExpectedButtonLogInLabel());*/
+		Assert.assertEquals($(LoginPage.class).getLogInButtonValue(), $(LoginPage.class).getExpectedButtonLogInLabel());
 	}
 
 	@Test
@@ -50,8 +43,6 @@ public class LoginPageElementVisibilityTest extends BaseTest {
 		for (Locale locale : supportedLocates) {
 			displayValue(locale, "label.password");
 		}
-
-		//displayValue(Locale.getDefault(), "label.page.title");
 	}
 
 	private void displayValue(Locale locale, String key) throws UnsupportedEncodingException {
@@ -59,7 +50,6 @@ public class LoginPageElementVisibilityTest extends BaseTest {
 		String value = labels.getString(key);
 		System.out.println("Locale = " + locale.toString() + ", " +
 				"key = " + key + ", " +
-				"value = " + new String(value.getBytes(), "UTF-8"));
+				"value = " + value);
 	}
-
 }

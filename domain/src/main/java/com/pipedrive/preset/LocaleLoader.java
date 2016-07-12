@@ -1,5 +1,7 @@
 package com.pipedrive.preset;
 
+import com.pipedrive.utils.UTF8Control;
+
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -16,19 +18,10 @@ public class LocaleLoader {
 	}
 
 	public LocaleLoader(String bundle, Locale locale) {
-		this.bundle = ResourceBundle.getBundle(bundle, locale);
+		this.bundle = ResourceBundle.getBundle(bundle, locale, new UTF8Control());
 	}
 
 	public String getValue(String key) {
-		String value = bundle.getString(key);
-		try {
-			System.out.println(StandardCharsets.UTF_8.encode(value));
-			return new String(value.getBytes(), "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		return value;
+		return bundle.getString(key);
 	}
-
-
 }
