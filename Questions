@@ -26,8 +26,10 @@
 7.  LoginPageElementVisibilityTest Тест падает и не идет дальше если хотя бы один локатор не совпадает
     Тест должен продолжиться,
 
-8. Не берет системную локаль,
+8.  Передача локали в виде параметра
 
-9. Debug
-
+9. Кодировки expected [SalasÃµna] but found [Salasõna]
+    русский expected [ÐÐ¾Ð¹ÑÐ¸] but found [Logi sisse]
 10. Title пофейленых тестов нечитаем
+
+11. Debug
