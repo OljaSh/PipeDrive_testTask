@@ -8,7 +8,6 @@ import com.pipedrive.preset.URL;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -33,7 +32,7 @@ public class LoginPageElementVisibilityTest extends BaseTest {
 	}
 
 	@Test
-	public void checkLocale() throws UnsupportedEncodingException {
+	public void checkLocale() {
 		Locale[] supportedLocates = {
 				Locale.forLanguageTag("ru"),
 				Locale.ENGLISH,
@@ -45,7 +44,7 @@ public class LoginPageElementVisibilityTest extends BaseTest {
 		}
 	}
 
-	private void displayValue(Locale locale, String key) throws UnsupportedEncodingException {
+	private void displayValue(Locale locale, String key) {
 		ResourceBundle labels = ResourceBundle.getBundle("LabelsBundle", locale);
 		String value = labels.getString(key);
 		System.out.println("Locale = " + locale.toString() + ", " +
