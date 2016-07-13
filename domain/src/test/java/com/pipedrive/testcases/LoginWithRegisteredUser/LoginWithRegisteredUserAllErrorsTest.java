@@ -1,10 +1,12 @@
 package com.pipedrive.testcases.LoginWithRegisteredUser;
 
 import com.pipedrive.core.BaseTest;
+import com.pipedrive.data.DataProviders;
 import com.pipedrive.data.RegisteredUser;
 import com.pipedrive.pajeobject.HomePage;
 import com.pipedrive.pajeobject.LoginPage;
 import com.pipedrive.preset.Error;
+import com.pipedrive.preset.Language;
 import com.pipedrive.preset.URL;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -23,19 +25,6 @@ import static java.util.stream.Collectors.toList;
 @Title("Login with created user Functional tests ")
 @Description("Login with created user test")
 public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
-
-    private static RegisteredUser registeredUser;
-
-    @DataProvider(name = "positiveDP")
-    public static Iterator<Object[]> positiveDP() {
-        if (registeredUser == null) {
-            registeredUser = new RegisteredUser("sh.olja@gmail.com", "nalT5g8S");
-        }
-        ArrayList<Object[]> output = new ArrayList<>();
-        output.add(new Object[]{registeredUser});
-        return output.iterator();
-    }
-
 
     @DataProvider(name = "negativeDP")
     public static Iterator<Object[]> negariveDP() {
@@ -66,7 +55,7 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
 
     @Title("Login with created user successful case")
     @Description("Login with Login with created user successful case")
-    @Test(dataProvider = "positiveDP", priority = 4)
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "positiveDP", priority = 4)
     public void loginWithRegisteredUser(RegisteredUser registeredUser) {
         loadSiteUrl(URL.PROD)
                 //.selectLanguage("en")
@@ -88,7 +77,7 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
     @Test(priority=1, dataProvider = "negativeDP")
     public void loginWithInvalidCredentials(RegisteredUser registeredUser) {
         loadSiteUrl(URL.PROD)
-                .selectLanguage("en")
+                .selectLanguage(Language.ENGLISH)
                 .clickLoginButton()
                 .setRegisteredEmailAddress(registeredUser.getEmail())
                 .setRegisteredPassword(registeredUser.getPassword())
@@ -102,7 +91,7 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
     @Test(priority=2, dataProvider = "incorrectEmailFormatDP", enabled = true)
     public void loginWithIncorrectEmailFormat(RegisteredUser registeredUser) {
         loadSiteUrl(URL.PROD)
-				.selectLanguage("en")
+				.selectLanguage(Language.ENGLISH)
                 .clickLoginButton()
                 .setRegisteredEmailAddress(registeredUser.getEmail())
                 .setRegisteredPassword(registeredUser.getPassword())
@@ -116,7 +105,7 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
 	@Test(priority=3, enabled = true)
 	public void loginWithEmptyemailOrPassword() {
 		loadSiteUrl(URL.PROD)
-				.selectLanguage("en")
+				.selectLanguage(Language.ENGLISH)
 				.clickLoginButton()
 				//.setRegisteredEmailAddress(registeredUser.getEmail())
 				//.setRegisteredPassword(registeredUser.getPassword())

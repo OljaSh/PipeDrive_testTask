@@ -5,9 +5,9 @@
         <parameter name="browser" value="firefox"/>
         <classes>
             <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginPageElementVisibilityTest">
-               <!-- <methods>
-                    <include name="checkLabel"/>
-                </methods>-->
+                <methods>
+                    <include name="checkLabelsOnLoginPage"/>
+                </methods>
             </class>
         </classes>
     </test>

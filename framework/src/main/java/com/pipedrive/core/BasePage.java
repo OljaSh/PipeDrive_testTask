@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Locale;
 import java.util.logging.Logger;
 
 import static com.pipedrive.utils.PropertiesUtils.getLongValue;
@@ -20,12 +21,21 @@ public class BasePage {
 
     private WebDriver driver;
     private WebDriverWait wait;
+    private static Locale currentLocale = Locale.getDefault();
 
     private static final Logger LOGGER = Logger.getLogger(BasePage.class.getName());
 
     public BasePage (){
         driver = BaseTest.getDriver();
         wait = new WebDriverWait(driver, getLongValue(PropertiesUtils.Constants.DEFAULT_TIMEOUT));
+    }
+
+    public static Locale getCurrentLocale() {
+        return currentLocale;
+    }
+
+    public static void setCurrentLocale(Locale currentLocale) {
+        BasePage.currentLocale = currentLocale;
     }
 
     public WebElement findElement(By element){

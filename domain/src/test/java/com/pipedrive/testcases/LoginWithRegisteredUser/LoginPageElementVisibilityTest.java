@@ -3,6 +3,7 @@ package com.pipedrive.testcases.LoginWithRegisteredUser;
 
 import com.pipedrive.core.BaseTest;
 import com.pipedrive.pajeobject.LoginPage;
+import com.pipedrive.preset.Language;
 import com.pipedrive.preset.URL;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,18 +16,12 @@ import static com.pipedrive.preset.PageObjectSupplier.loadSiteUrl;
 
 public class LoginPageElementVisibilityTest extends BaseTest {
 
-
 	//@Description("Check Labels on Login page")
 	@Test
 	public void checkLabelsOnLoginPage() {
 		loadSiteUrl(URL.PROD)
-				//.selectLanguage("de")
+				.selectLanguage(Language.ESTONIAN)
 				.clickLoginButton();
-
-		System.out.println($(LoginPage.class).getEmailValue());
-		System.out.println($(LoginPage.class).getExpectedEmailLabel());
-		System.out.println($(LoginPage.class).getPasswordValue());
-		System.out.println($(LoginPage.class).getExpectedPasswordLabel());
 
 		Assert.assertEquals($(LoginPage.class).getPageTitleValue(), $(LoginPage.class).getExpectedPageTitleLabel());
 		Assert.assertEquals($(LoginPage.class).getEmailValue(), $(LoginPage.class).getExpectedEmailLabel());
@@ -36,19 +31,17 @@ public class LoginPageElementVisibilityTest extends BaseTest {
 		Assert.assertEquals($(LoginPage.class).getLogInButtonValue(), $(LoginPage.class).getExpectedButtonLogInLabel());
 	}
 
-	@Test (enabled = false)
+	@Test
 	public void checkLocale() {
 		Locale[] supportedLocates = {
-				Locale.GERMAN,
+				Locale.forLanguageTag("ru"),
 				Locale.ENGLISH,
 				Locale.forLanguageTag("et-EE")
 		};
 
 		for (Locale locale : supportedLocates) {
-			displayValue(locale, "label.page.title");
+			displayValue(locale, "label.password");
 		}
-
-		displayValue(Locale.getDefault(), "label.page.title");
 	}
 
 	private void displayValue(Locale locale, String key) {
@@ -58,5 +51,4 @@ public class LoginPageElementVisibilityTest extends BaseTest {
 				"key = " + key + ", " +
 				"value = " + value);
 	}
-
 }

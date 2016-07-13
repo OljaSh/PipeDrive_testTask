@@ -5,6 +5,7 @@ import com.pipedrive.data.RegisteredUser;
 import com.pipedrive.pajeobject.HomePage;
 import com.pipedrive.pajeobject.LoginPage;
 import com.pipedrive.preset.Error;
+import com.pipedrive.preset.Language;
 import com.pipedrive.preset.URL;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -79,7 +80,7 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 	@Test(priority=1, dataProvider = "negativeDP")
 	public void loginWithInvalidCredentials(RegisteredUser registeredUser) {
 		loadSiteUrl(URL.PROD)
-				.selectLanguage("en")
+				.selectLanguage(Language.ENGLISH)
 				.clickLoginButton()
 				.setRegisteredEmailAddress(registeredUser.getEmail())
 				.setRegisteredPassword(registeredUser.getPassword())
