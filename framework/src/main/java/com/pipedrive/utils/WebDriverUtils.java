@@ -22,7 +22,7 @@ public final class WebDriverUtils {
     }
 
     public static void setIEDriverPath(){
-        System.setProperty("webdriver.ie.driver", getSystemResource("drivers/" + "IEDriverUtils.exe").getFile());
+        System.setProperty("webdriver.ie.driver", getSystemResource("drivers/" + "IEDriverServer.exe").getFile());
     }
 
     private WebDriverUtils() {
