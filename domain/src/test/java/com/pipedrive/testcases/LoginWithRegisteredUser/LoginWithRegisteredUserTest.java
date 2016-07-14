@@ -1,6 +1,7 @@
 package com.pipedrive.testcases.LoginWithRegisteredUser;
 
 import com.pipedrive.core.BaseTest;
+import com.pipedrive.data.DataProviders;
 import com.pipedrive.data.RegisteredUser;
 import com.pipedrive.pajeobject.HomePage;
 import com.pipedrive.pajeobject.LoginPage;
@@ -13,7 +14,6 @@ import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Description;
 import ru.yandex.qatools.allure.annotations.Title;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.stream.Stream;
 
@@ -24,18 +24,6 @@ import static java.util.stream.Collectors.toList;
 @Title("Login with created user Functional tests ")
 @Description("Login with created user test")
 public class LoginWithRegisteredUserTest extends BaseTest {
-
-	private static RegisteredUser registeredUser;
-
-    @DataProvider(name = "positiveDP")
-	public static Iterator<Object[]> positiveDP() {
-		if (registeredUser == null) {
-			registeredUser = new RegisteredUser("sh.olja@gmail.com", "nalT5g8S");
-		}
-		ArrayList<Object[]> output = new ArrayList<>();
-		output.add(new Object[]{registeredUser});
-		return output.iterator();
-	}
 
 
     @DataProvider(name = "negativeDP")
@@ -58,10 +46,10 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 
 	@Title("Login with created user successful case")
 	@Description("Login with Login with created user successful case")
-	@Test(dataProvider = "positiveDP", priority = 4)
+	@Test(dataProviderClass = DataProviders.class, dataProvider = "positiveDP")
 	public void loginWithRegisteredUser(RegisteredUser registeredUser) {
 		loadSiteUrl(URL.PROD)
-				//.selectLanguage("en")
+				.selectLanguage(Language.ENGLISH)
 				.clickLoginButton()
 				.setRegisteredEmailAddress(registeredUser.getEmail())
 				.setRegisteredPassword(registeredUser.getPassword())
@@ -77,7 +65,7 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 
     @Title("Negative tests")
     @Description("Negative test with incorrect user name/password/incorrect format/spase/empty fields value")
-	@Test(priority=1, dataProvider = "negativeDP")
+	@Test(dataProviderClass = DataProviders.class, dataProvider = "negativeDP")
 	public void loginWithInvalidCredentials(RegisteredUser registeredUser) {
 		loadSiteUrl(URL.PROD)
 				.selectLanguage(Language.ENGLISH)

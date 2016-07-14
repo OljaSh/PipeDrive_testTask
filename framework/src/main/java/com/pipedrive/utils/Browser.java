@@ -4,7 +4,9 @@ import java.util.stream.Stream;
 
 public enum Browser {
     CHROME("chrome"),
-    FIREFOX("firefox");
+    FIREFOX("firefox"),
+    IE("ie"),
+    SAFARI("safari");
 
     private String name;
 

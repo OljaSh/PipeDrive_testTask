@@ -6,10 +6,10 @@ import com.pipedrive.utils.WebDriverUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
@@ -35,6 +35,12 @@ public class BaseTest {
             case CHROME:
                 WebDriverUtils.setChromeDriverPath();
                 driver = new ChromeDriver();
+                break;
+            case SAFARI:
+                driver = new SafariDriver();
+                break;
+            case IE:
+                driver = new InternetExplorerDriver();
                 break;
             case FIREFOX:
             default:

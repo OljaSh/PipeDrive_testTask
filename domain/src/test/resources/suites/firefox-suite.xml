@@ -4,9 +4,9 @@
     <test name="RegisterTest">
         <parameter name="browser" value="firefox"/>
         <classes>
-         <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginWithRegisteredUserTest">
-               <!-- <methods>
-                    <include name="checkLabel"/>
+         <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginWithRegisteredUserAllErrorsTest">
+             <!--  <methods>
+                    <include name="loginWithInvalidCredentials"/>
                 </methods>-->
             </class>
         </classes>

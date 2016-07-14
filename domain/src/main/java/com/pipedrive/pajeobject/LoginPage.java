@@ -9,11 +9,12 @@ import static com.pipedrive.preset.PageObjectSupplier.$;
 
 public class LoginPage extends BasePage {
 
-	private By inputEmail = By.id("login");
-	private By inputPassword = By.id("password");
-	/*private By buttonLoginNegative = By.xpath("./*//*[@id='login_form']/div[5]/button");
-	private By buttonLoginPositive = By.xpath("./*//*[@id='login_form']/div[5]/button");*/
-	private By buttonLogin = By.xpath(".//*[@id='login_form']/div[5]/button");
+	//private By inputEmail = By.id("login");   // does not work with safari
+	private By inputEmail = By.cssSelector("#login");
+	//private By inputPassword = By.id("password");   //does not work with safari
+	private By inputPassword = By.cssSelector("#password");
+	//private By buttonLogin = By.xpath(".//*[@id='login_form']/div[5]/button");
+	private By buttonLogin = By.cssSelector(".submit-button.id--login");
 
 	private By checkboxRememberMe = By.id("remember");
 	private By buttonLoginWithGoogle = By.className("btn-google-plus btn-link");
@@ -62,9 +63,9 @@ public class LoginPage extends BasePage {
 		return $(HomePage.class);
 	}
 
+	//--------------------------------------------------------------------------
 	@Step("Get warning message that password or email is incorrect")
 	public String getWarningMessageIncorrectEmailOrPassword() {
-
 		return getText(textWarningIncorrectEmailOrPassword);
 	}
 

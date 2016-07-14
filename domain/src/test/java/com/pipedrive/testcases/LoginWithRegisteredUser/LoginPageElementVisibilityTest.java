@@ -7,6 +7,7 @@ import com.pipedrive.preset.Language;
 import com.pipedrive.preset.URL;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Title;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -17,10 +18,11 @@ import static com.pipedrive.preset.PageObjectSupplier.loadSiteUrl;
 public class LoginPageElementVisibilityTest extends BaseTest {
 
 	//@Description("Check Labels on Login page")
+	@Title("check Labels OnLogin Page test")
 	@Test
 	public void checkLabelsOnLoginPage() {
 		loadSiteUrl(URL.PROD)
-				.selectLanguage(Language.ESTONIAN)
+				.selectLanguage(Language.RUSSIAN)
 				.clickLoginButton();
 
 		Assert.assertEquals($(LoginPage.class).getPageTitleValue(), $(LoginPage.class).getExpectedPageTitleLabel());
