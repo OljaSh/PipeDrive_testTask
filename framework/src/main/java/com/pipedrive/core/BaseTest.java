@@ -40,6 +40,7 @@ public class BaseTest {
                 driver = new SafariDriver();
                 break;
             case IE:
+                WebDriverUtils.setIEDriverPath();
                 driver = new InternetExplorerDriver();
                 break;
             case FIREFOX:

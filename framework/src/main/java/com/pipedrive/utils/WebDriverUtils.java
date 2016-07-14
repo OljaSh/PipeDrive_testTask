@@ -21,6 +21,10 @@ public final class WebDriverUtils {
         System.setProperty("webdriver.chrome.driver", getSystemResource("drivers/" + driverName).getFile());
     }
 
+    public static void setIEDriverPath(){
+        System.setProperty("webdriver.ie.driver", getSystemResource("drivers/" + "IEDriverUtils.exe").getFile());
+    }
+
     private WebDriverUtils() {
     }
 
