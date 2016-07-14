@@ -4,7 +4,7 @@
     <test name="RegisterTest">
         <parameter name="browser" value="ie"/>
         <classes>
-            <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginWithRegisteredUserAllErrorsTest">
+            <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginWithRegisteredUserTest">
                 <!--  <methods>
                        <include name="loginWithInvalidCredentials"/>
                    </methods>-->
