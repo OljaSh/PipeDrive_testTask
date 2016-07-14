@@ -5,9 +5,9 @@
         <parameter name="browser" value="ie"/>
         <classes>
             <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginPageElementVisibilityTest">
-                <methods>
+               <!-- <methods>
                     <include name="checkLabelsOnLoginPage"/>
-                </methods>
+                </methods>-->
             </class>
         </classes>
     </test>

@@ -22,7 +22,7 @@ public class LoginPageElementVisibilityTest extends BaseTest {
 	@Test
 	public void checkLabelsOnLoginPage() {
 		loadSiteUrl(URL.PROD)
-				.selectLanguage(Language.RUSSIAN)
+				.selectLanguage(Language.ENGLISH)
 				.clickLoginButton();
 
 		Assert.assertEquals($(LoginPage.class).getPageTitleValue(), $(LoginPage.class).getExpectedPageTitleLabel());
