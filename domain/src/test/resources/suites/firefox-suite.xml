@@ -5,8 +5,8 @@
         <parameter name="browser" value="firefox"/>
         <classes>
          <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginWithRegisteredUserAllErrorsTest">
-             <!--  <methods>
-                    <include name="loginWithInvalidCredentials"/>
+              <!--<methods>
+                    <include name="loginWithExpiredUser"/>
                 </methods>-->
             </class>
         </classes>

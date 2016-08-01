@@ -44,7 +44,7 @@ public class DataProviders {
 				.iterator();
 	}
 
-	@DataProvider(name = "incorrectEmailorPassword")
+	@DataProvider(name = "incorrectEmailorPasswordDP")
 	public static Iterator<Object[]> incorrectEmailorPassword() {
 		return Stream.of(new RegisteredUser("sh.olja", "nalT5g8S"),
 				new RegisteredUser("gmail.com", "nalT5g8S"),
@@ -54,6 +54,13 @@ public class DataProviders {
 				.collect(toList())
 				.iterator();
 	}
+
+	@DataProvider(name = "expiredUserDP")
+	public static Iterator<Object[]> expiredUserDP() {
+	return Collections.singletonList(new RegisteredUser("sh.olja@gmail.com", "nalT5g8S")).stream()
+	.map(user -> new Object[]{user})
+			.iterator();
+}
 }
 
 

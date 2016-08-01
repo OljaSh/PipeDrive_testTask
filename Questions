@@ -31,7 +31,10 @@
 -----------------------------------------------
 NEXT
 
-- Safari не понимает половину локаторов
+- Safari и IE не понимает половину локаторов
+Session ID: null
+*** Element info: {Using=xpath, value=.//*[@id='login_form']/div[1]/h1}
+	at com.pipedrive.testcases.LoginWithRegisteredUser.LoginPageElementVisibilityTest.checkLabelsOnLoginPage(LoginPageElementVisibilityTest.java:28)
 
 - Как лучше настроить проверку локалей? Через  Suite?
 

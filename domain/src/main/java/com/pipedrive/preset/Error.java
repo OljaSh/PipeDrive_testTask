@@ -12,7 +12,9 @@ public enum Error {
 	EMPTY_EMAIL(ResourceBundle.getBundle("LabelsBundle", Locale.getDefault())
 			.getString("label.error.message.addEmailAddress")),
 	EMPTY_PASSWORD(ResourceBundle.getBundle("LabelsBundle", Locale.getDefault())
-			.getString("label.error.message.addPassword"));
+			.getString("label.error.message.addPassword")),
+	EXPIRED_USER(ResourceBundle.getBundle("LabelsBundle", Locale.getDefault())
+			.getString("label.error.message.expiredUser"));
 
 	private String text;
 
