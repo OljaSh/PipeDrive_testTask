@@ -1,4 +1,4 @@
-----------Log in page-------------
+----------Log in -------------
 
 1. It's insecure to display specific error messages linked with particular fields
    There should be be a single generic locator
@@ -18,5 +18,11 @@
    <div class="js_form_error field-valid" style="display: inline-block;">Please add a valid email address</div>
 
 5. Previous errors not cleared
+
+6. Page Please provide your billing information only on English
+
+-------- Register new user --------
+
+
 
 

@@ -7,17 +7,17 @@ import com.pipedrive.preset.Language;
 import com.pipedrive.preset.URL;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
-
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 import static com.pipedrive.preset.PageObjectSupplier.$;
 import static com.pipedrive.preset.PageObjectSupplier.loadSiteUrl;
 
 public class LoginPageElementVisibilityTest extends BaseTest {
 
-	//@Description("Check Labels on Login page")
+	@Features("Login page Elements visibility")
+	@Stories("UI test")
 	@Title("check Labels OnLogin Page test")
 	@Test
 	public void checkLabelsOnLoginPage() {
@@ -33,7 +33,7 @@ public class LoginPageElementVisibilityTest extends BaseTest {
 		Assert.assertEquals($(LoginPage.class).getLogInButtonValue(), $(LoginPage.class).getExpectedButtonLogInLabel());
 	}
 
-	@Test
+	/*@Test
 	public void checkLocale() {
 		Locale[] supportedLocates = {
 				Locale.forLanguageTag("ru"),
@@ -52,5 +52,5 @@ public class LoginPageElementVisibilityTest extends BaseTest {
 		System.out.println("Locale = " + locale.toString() + ", " +
 				"key = " + key + ", " +
 				"value = " + value);
-	}
+	}*/
 }

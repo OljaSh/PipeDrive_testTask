@@ -28,13 +28,24 @@
 9. Кодировки expected [SalasÃµna] but found [Salasõna]
     русский expected [ÐÐ¾Ð¹ÑÐ¸] but found [Logi sisse]
 
------------------------------------------------
-NEXT
+-----------------NEXT------------------------------
+
 
 - Safari и IE не понимает половину локаторов
 Session ID: null
 *** Element info: {Using=xpath, value=.//*[@id='login_form']/div[1]/h1}
 	at com.pipedrive.testcases.LoginWithRegisteredUser.LoginPageElementVisibilityTest.checkLabelsOnLoginPage(LoginPageElementVisibilityTest.java:28)
+
+
+
+- Создание пользователя, как лучше  организовтаь проверку негативных сценариев? (пустые/длинные/невалидные поля) так же через DataProvider?
+
+- Настройка проверки на мобилках
+
+- как сделать что бы при запуске тестов окно браузера не открывалось в foreground
+
+------Low Priority---------
+
 
 - Как лучше настроить проверку локалей? Через  Suite?
 
@@ -47,3 +58,14 @@ Session ID: null
 - title пофейленых тестов нечитаем
 
 - Debug
+
+- В позитивном тест кейсе поменять захардкоденное имя пользователя что бы считывалось автоматически
+
+- DataProviders разное описание -> разобраться
+
+-------Allure-----
+
+ - как лучше задать данные по environment, что бы генерились автоматически
+ https://github.com/allure-framework/allure-core/wiki/Environment
+
+ -в списке в  title отображается название тест метода, а не описание анотации @Title

@@ -11,16 +11,19 @@ import com.pipedrive.preset.URL;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Description;
+import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
 
 import static com.pipedrive.preset.PageObjectSupplier.$;
 import static com.pipedrive.preset.PageObjectSupplier.loadSiteUrl;
 
-@Title("Login with created user Functional tests ")
-@Description("Login with created user test")
+//@Title("Login with created user Functional tests ")
+//@Description("Login with created user test")
 public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
 
-
+    @Features("Login With Register User all Errors")
+    @Stories("Login")
     @Title("Negative tests")
     @Description("Negative test with incorrect user name/password/incorrect format/spase/empty fields value")
     @Test(dataProviderClass = DataProviders.class, dataProvider = "incorrectEmailorPassword", enabled = false)
@@ -35,8 +38,9 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
         Assert.assertEquals($(LoginPage.class).getWarningMessageIncorrectEmailOrPassword(), Error.INCORRECT_EMAIL_OR_PASSWORD.toString());
     }
 
+    @Features("Login With Register User all Errors")
+    @Stories("Login")
     @Title("Login with invalid  email")
-    @Description("Login with invalid  email")
     @Test(dataProviderClass = DataProviders.class, dataProvider = "incorrectEmailFormatDP", enabled = false)
     public void loginWithIncorrectEmailFormat(RegisteredUser registeredUser) {
         loadSiteUrl(URL.PROD)
@@ -49,8 +53,9 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
         Assert.assertEquals($(LoginPage.class).getWarningMessageInvalidEmailAddress(), Error.INCORRECT_EMAIL_FORMAT.toString());
     }
 
+    @Features("Login With Register User all Errors")
+    @Stories("Login")
 	@Title("Login with empty email or password")
-	@Description("Login with empty email or password")
 	@Test (enabled = false)
 	public void loginWithEmptyemailOrPassword() {
 		loadSiteUrl(URL.PROD)
@@ -64,8 +69,9 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
 		Assert.assertEquals($(LoginPage.class).getWarningMessageAddPassword(), Error.EMPTY_PASSWORD.toString());
 	}
 
+    @Features("Login With Register User all Errors")
+    @Stories("Login")
     @Title("Login with expired user")
-    @Description("Login with expired user")
     @Test(dataProviderClass = DataProviders.class, dataProvider = "expiredUserDP")
     public void loginWithExpiredUser(RegisteredUser registeredUser){
         loadSiteUrl(URL.PROD)

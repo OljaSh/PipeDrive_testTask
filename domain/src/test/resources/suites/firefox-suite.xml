@@ -4,7 +4,7 @@
     <test name="RegisterTest">
         <parameter name="browser" value="firefox"/>
         <classes>
-         <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginWithRegisteredUserAllErrorsTest">
+         <class name="com.pipedrive.testcases.RegisterNewUser.RegisterNewUserPositiveTest">
               <!--<methods>
                     <include name="loginWithExpiredUser"/>
                 </methods>-->

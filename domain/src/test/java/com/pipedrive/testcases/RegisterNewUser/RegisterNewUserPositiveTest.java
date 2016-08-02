@@ -7,7 +7,8 @@ import com.pipedrive.preset.URL;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import ru.yandex.qatools.allure.annotations.Description;
+import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import static com.pipedrive.preset.PageObjectSupplier.$;
 import static com.pipedrive.preset.PageObjectSupplier.loadSiteUrl;
 
 
-public class RegisterNewUserTest  extends BaseTest{
+public class RegisterNewUserPositiveTest extends BaseTest{
 
     private static NewUser newUser;
 
@@ -32,8 +33,9 @@ public class RegisterNewUserTest  extends BaseTest{
         return output.iterator();
     }
 
-    @Title("Sign up wirh new  user successful case")
-    @Description("Sign up wirh new  user successful case")
+    @Features("Register new user")
+    @Stories("Positive user registration")
+    @Title("New user sign up successful case")
     @Test(dataProvider = "testDP")
     public void registerNewUserPositiveTest(NewUser newUser){
         loadSiteUrl(URL.PROD)
