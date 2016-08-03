@@ -4,7 +4,6 @@ import com.pipedrive.core.BaseTest;
 import com.pipedrive.data.NewUser;
 import com.pipedrive.pajeobject.HomePage;
 import com.pipedrive.preset.URL;
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Features;
@@ -48,6 +47,30 @@ public class RegisterNewUserPositiveTest extends BaseTest{
                 .selectCompanyIndustry(newUser.getCompanyIndustry())
                 .clickRegisterButton();
 
-        Assert.assertEquals($(HomePage.class).getUserName(), $(HomePage.class).getUserName());
+        getSoftAssert().assertEquals($(HomePage.class).getUserName(), $(HomePage.class).getUserName());
     }
+
+/*	@Features("Register new user")
+	@Stories("Positive user registration")
+	@Title("New user sign up successful case")
+	@Test(dataProvider = "negativeRegistrationDP", dataProviderClass = DataProviders.class)
+	public void registerNewUserNegativeTest(NewUser newUser){
+		loadSiteUrl(URL.PROD)
+				.clickSignUpButton()
+				.setYourName(newUser.getUserName())
+				.setCompanyName(newUser.getCompanyName())
+				.setEmail(newUser.getUserEmail())
+				.setPassword(newUser.getUserPassword())
+				.selectTeamSize(newUser.getTeamSize())
+				.selectCompanyIndustry(newUser.getCompanyIndustry())
+				.clickRegisterButton();
+
+		verifyTextEquals($(SignUpPage.class).getUsernameErrorText(), Error.EMPTY_EMAIL.toString(),
+				"Username error");
+		getSoftAssert().assertEquals($(SignUpPage.class).getUsernameErrorText(), Error.EMPTY_EMAIL.toString());
+		getSoftAssert().assertEquals($(SignUpPage.class).getUsernameErrorText(), Error.EMPTY_EMAIL.toString());
+		getSoftAssert().assertEquals($(SignUpPage.class).getUsernameErrorText(), Error.EMPTY_EMAIL.toString());
+		getSoftAssert().assertEquals($(SignUpPage.class).getUsernameErrorText(), Error.EMPTY_EMAIL.toString());
+		getSoftAssert().assertEquals($(SignUpPage.class).getUsernameErrorText(), Error.EMPTY_EMAIL.toString());
+	}*/
 }

@@ -23,6 +23,18 @@ public class DataProviders {
 				.iterator();
 	}
 
+	@DataProvider(name = "negativeRegistrationDP")
+	public static Iterator<Object[]> negativeRegistrationDP() {
+		return Stream.of(
+				new NewUser("userName", "companyName", "email", "password", "6-15 members", "IT  Services"),
+				new NewUser("userName", "companyName", "email", "password", "6-15 members", "IT  Services"),
+				new NewUser("userName", "companyName", "email", "password", "6-15 members", "IT  Services")
+		)
+				.map(user -> new Object[]{user})
+				.collect(toList())
+				.iterator();
+	}
+
 
 	//--------------------------------------
 

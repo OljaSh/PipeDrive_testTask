@@ -10,9 +10,9 @@ import ru.yandex.qatools.allure.annotations.Attachment;
 import java.util.logging.Logger;
 
 import static com.pipedrive.core.BaseTest.getDriver;
+import static com.pipedrive.core.BaseTest.getSoftAssert;
 
-
-public class BaseListener implements IInvokedMethodListener, ITestListener {
+public class BaseListener implements IInvokedMethodListener {
 
     private static final Logger LOGGER = Logger.getLogger(BaseListener.class.getName());
 
@@ -23,42 +23,15 @@ public class BaseListener implements IInvokedMethodListener, ITestListener {
 
     @Override
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
-
-    }
-
-    @Override
-    public void onTestStart(ITestResult result) {
-
-    }
-
-    @Override
-    public void onTestSuccess(ITestResult result) {
-        takeScreenshot();
-    }
-
-    @Override
-    public void onTestFailure(ITestResult result) {
-        takeScreenshot();
-    }
-
-    @Override
-    public void onTestSkipped(ITestResult result) {
-
-    }
-
-    @Override
-    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-
-    }
-
-    @Override
-    public void onStart(ITestContext context) {
-
-    }
-
-    @Override
-    public void onFinish(ITestContext context) {
-
+	    if (method.isTestMethod()) {
+	    	try {
+	    		getSoftAssert().assertAll();
+		    } catch (AssertionError error) {
+		    	testResult.setStatus(ITestResult.FAILURE);
+			    testResult.setThrowable(error);
+		    }
+		    takeScreenshot();
+	    }
     }
 
     private void takeScreenshot() {
