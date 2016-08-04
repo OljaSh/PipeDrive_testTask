@@ -1,9 +1,11 @@
 package com.pipedrive.pajeobject;
 
 import com.pipedrive.core.BasePage;
+import lombok.Getter;
 import org.openqa.selenium.By;
 import ru.yandex.qatools.allure.annotations.Step;
 
+@Getter
 public class SignUpPage extends BasePage {
 
 
@@ -17,6 +19,7 @@ public class SignUpPage extends BasePage {
     private By buttonSignUpFree = By.id("register_button");
     private By checkboxSalesTipsAndNews = By.id("optin_news");
 
+	private By labelUsernameError = By.cssSelector("");
 
     @Step("Set  Name = {0}")
     public SignUpPage setYourName(final String yourName){
@@ -62,5 +65,8 @@ public class SignUpPage extends BasePage {
     }
 
 
+    public String getUsernameErrorText() {
+    	return getText(labelUsernameError);
+    }
 
 }

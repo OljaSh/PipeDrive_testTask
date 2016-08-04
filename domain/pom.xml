@@ -31,7 +31,7 @@
                 </property>
             </activation>
             <properties>
-                <suites>firefox-suite</suites>
+                <suites>chrome-suite</suites>
             </properties>
         </profile>
     </profiles>
@@ -117,7 +117,7 @@
                 <artifactId>allure-maven-plugin</artifactId>
                 <version>2.5</version>
                 <configuration>
-                    <version>1.4.24.RC2</version>
+                    <version>1.4.24.RC3</version>
                     <reportDirectory>${project.basedir}/../reports</reportDirectory>
                     <properties>
                         <allure.issues.tracker.pattern>https://url/browse/%s</allure.issues.tracker.pattern>

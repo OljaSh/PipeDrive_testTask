@@ -1,8 +1,10 @@
 package com.pipedrive.data;
 
 
+import lombok.Data;
 import org.apache.commons.lang3.RandomStringUtils;
 
+@Data
 public class NewUser {
 
     private String userName;
@@ -21,12 +23,5 @@ public class NewUser {
         this.teamSize = teamSize;
         this.companyIndustry = companyIndustry;
     }
-
-    public String getUserName(){return userName;}
-    public String getCompanyName(){return  companyName;}
-    public String getUserEmail(){return  userEmail;}
-    public String getUserPassword(){return userPassword;}
-    public String getTeamSize(){return teamSize;}
-    public String getCompanyIndustry(){return companyIndustry;}
 
 }
