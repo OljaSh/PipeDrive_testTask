@@ -23,6 +23,7 @@ public class DataProviders {
 				.iterator();
 	}
 
+	//Data provider for negative Registration test cases
 	@DataProvider(name = "negativeRegistrationDP")
 	public static Iterator<Object[]> negativeRegistrationDP() {
 		return Stream.of(

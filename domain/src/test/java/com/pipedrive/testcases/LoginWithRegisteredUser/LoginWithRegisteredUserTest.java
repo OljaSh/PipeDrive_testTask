@@ -6,7 +6,7 @@ import com.pipedrive.data.RegisteredUser;
 import com.pipedrive.pajeobject.HomePage;
 import com.pipedrive.preset.Language;
 import com.pipedrive.preset.URL;
-import org.testng.Assert;
+import com.pipedrive.preset.Users;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
@@ -31,7 +31,7 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 				.setRegisteredPassword(registeredUser.getPassword())
 				.clickButtonLogin();
 
-		Assert.assertEquals($(HomePage.class).getUserName(), "Olja");
+		getSoftAssert().assertEquals($(HomePage.class).getUserName(), Users.DEMOUSER.toString());
 		//Change hardcoded User name
 		$(HomePage.class).clickProfileDropDownMenu().clickLogOutButton();
 

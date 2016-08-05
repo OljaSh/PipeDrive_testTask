@@ -14,6 +14,8 @@ public class PropertiesUtils {
         public static final String PROD_URL = "prod.url.arg";
         public static final String WAIT_TIME_SEC = ("wait.time.sec");
         public static final String DEFAULT_TIMEOUT = ("default.timeout");
+        public static final String DEMO_USER = "demo.user";
+        public static final String EXPIRED_USER = "expired.user";
 
         private Constants(){
         }
