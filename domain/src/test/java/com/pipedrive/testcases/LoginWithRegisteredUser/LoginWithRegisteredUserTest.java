@@ -22,7 +22,7 @@ public class LoginWithRegisteredUserTest extends BaseTest {
 	@Features("Login With Register user")
 	@Stories("Positive Login")
 	@Title("Login with created user successful case")
-	@Test(dataProviderClass = DataProviders.class, dataProvider = "positiveDP")
+	@Test(dataProviderClass = DataProviders.class, dataProvider = "positiveLoginDP")
 	public void loginWithRegisteredUser(RegisteredUser registeredUser) {
 		loadSiteUrl(URL.PROD)
 				.selectLanguage(Language.ENGLISH)

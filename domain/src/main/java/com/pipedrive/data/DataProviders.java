@@ -17,19 +17,29 @@ public class DataProviders {
 
 	@DataProvider(name = "positiveRegistrationDP")
 	public static Iterator<Object[]> positiveRegistrationDP() {
-		return Stream.of(new NewUser("userName", "companyName", "email", "password", "6-15 members", "IT  Services"))
+		return Stream.of(new NewUser("userName", "companyName", "email", "password", "6-15 members", "Health"))
 				.map(user -> new Object[]{user})
 				.collect(toList())
 				.iterator();
 	}
 
 	//Data provider for negative Registration test cases
-	@DataProvider(name = "negativeRegistrationDP")
-	public static Iterator<Object[]> negativeRegistrationDP() {
+	@DataProvider(name = "registrationAllFieldsEmptyDP")
+	public static Iterator<Object[]> registrationAllFieldsEmptyDP() {
 		return Stream.of(
-				new NewUser("userName", "companyName", "email", "password", "6-15 members", "IT  Services"),
-				new NewUser("userName", "companyName", "email", "password", "6-15 members", "IT  Services"),
-				new NewUser("userName", "companyName", "email", "password", "6-15 members", "IT  Services")
+				new NewUser("", "", "", "", "", "")
+				//new NewUser("userName", "", "email", "password", "6-15 members", "Health"),
+				//new NewUser("userName", "companyName", "", "password", "6-15 members", "Health")
+		)
+				.map(user -> new Object[]{user})
+				.collect(toList())
+				.iterator();
+	}
+
+	@DataProvider(name = "userExistDP")
+	public static Iterator<Object[]> userExistDP() {
+		return Stream.of(
+				new NewUser("Olja", "companyName", "sh.olja@gmail.com", "password", "6-15 members", "Health")
 		)
 				.map(user -> new Object[]{user})
 				.collect(toList())
@@ -43,8 +53,8 @@ public class DataProviders {
 
 	// Data provider for positive Login test case
 
-	@DataProvider(name = "positiveDP")
-	public static Iterator<Object[]> positiveDP() {
+	@DataProvider(name = "positiveLoginDP")
+	public static Iterator<Object[]> positiveLoginDP() {
 	/*	Arrays.asList(new RegisteredUser("sh.olja@gmail.com", "nalT5g8S"),
 				new RegisteredUser("sh.olja@gmail.com", "nalT5g8S")).stream()*/
 		return Collections.singletonList(new RegisteredUser("shseven@hotmail.com", "TestTest")).stream()

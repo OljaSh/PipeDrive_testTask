@@ -9,11 +9,9 @@ import static com.pipedrive.preset.PageObjectSupplier.$;
 
 public class LoginPage extends BasePage {
 
-	//private By inputEmail = By.id("login");   // does not work with safari
+
 	private By inputEmail = By.cssSelector("#login");
-	//private By inputPassword = By.id("password");   //does not work with safari
 	private By inputPassword = By.cssSelector("#password");
-	//private By buttonLogin = By.xpath(".//*[@id='login_form']/div[5]/button");
 	private By buttonLogin = By.cssSelector(".submit-button.id--login");
 
 	private By checkboxRememberMe = By.id("remember");
@@ -88,6 +86,9 @@ public class LoginPage extends BasePage {
         return Stream.of(textPageTitle, textEmail, textPassword, textRememberMe, textButtonForgot, textButtonLognIn)
                 .allMatch(this::isDisplayed);
     }*/
+
+	//----------------------------------------------------------------------------
+
 
 	public String getPageTitleValue() {
 		return getText(labeltPageTitle);

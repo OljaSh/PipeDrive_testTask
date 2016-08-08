@@ -9,9 +9,6 @@ import static com.pipedrive.preset.PageObjectSupplier.$;
 
 public class HomePage extends BasePage {
 
-    public String getUserName(){
-        return getText(labelUserName);
-    }
 
     private By labelUserName = By.className("name"); //xpath("html/body/nav/div[1]/a/div/span[1]");  //className("name");
 
@@ -19,10 +16,18 @@ public class HomePage extends BasePage {
     private By buttonProfileDropDownMenu = By.xpath("html/body/nav/div[1]/a");
     private By dropDownMenu = By.xpath("html/body/div[8]/ul");
     private By buttonLogOut = By.linkText("Log out");   //By.tagName("('LI')[5]");
+    private By menuProfile = By.cssSelector(".icon-dropdown.profilePictureTooltip");
 
 
+    public String getUserName(){
 
+        return getText(labelUserName);
+    }
 
+    public boolean isElementPresent() {
+
+        return isDisplayed(menuProfile);
+    }
 
     @Step("Select Profile DropDown Menu")
     public HomePage clickProfileDropDownMenu(){
@@ -35,5 +40,7 @@ public class HomePage extends BasePage {
         click(buttonLogOut);
         return $(LogOutPage.class);
     }
+
+
 
 }

@@ -57,7 +57,7 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
     @Stories("Login")
 	@Title("Login with empty email or password")
 	@Test (enabled = false)
-	public void loginWithEmptyemailOrPassword() {
+	public void loginWithEmptyEmailOrPassword() {
 		loadSiteUrl(URL.PROD)
 				.selectLanguage(Language.ENGLISH)
 				.clickLoginButton()
