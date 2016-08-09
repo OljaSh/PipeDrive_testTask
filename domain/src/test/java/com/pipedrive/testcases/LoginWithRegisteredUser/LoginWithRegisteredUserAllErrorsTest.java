@@ -25,7 +25,7 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
     @Stories("Login")
     @Title("Login with incorrect email or password")
     @Description("Negative test with incorrect user name/password/incorrect format/spase/empty fields value")
-    @Test(dataProviderClass = DataProviders.class, dataProvider = "incorrectEmailorPassword", enabled = true)
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "incorrectEmailorPasswordDP", enabled = true)
     public void loginWithInvalidCredentials(RegisteredUser registeredUser) {
         loadSiteUrl(URL.PROD)
                 .selectLanguage(Language.ENGLISH)
@@ -83,5 +83,4 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
 
         getSoftAssert().assertEquals($(BillingAfterTrialPage.class).getWarningMessageThatTrialPeriodEnded(), Error.EXPIRED_USER.toString());
     }
-
 }
