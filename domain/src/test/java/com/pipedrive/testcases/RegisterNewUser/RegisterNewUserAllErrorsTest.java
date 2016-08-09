@@ -2,7 +2,7 @@ package com.pipedrive.testcases.RegisterNewUser;
 
 import com.pipedrive.core.BaseTest;
 import com.pipedrive.data.DataProviders;
-import com.pipedrive.data.NewUser;
+import com.pipedrive.data.NewUserPredefined;
 import com.pipedrive.pajeobject.LoginPage;
 import com.pipedrive.preset.Error;
 import com.pipedrive.preset.Language;
@@ -32,16 +32,16 @@ public class RegisterNewUserAllErrorsTest extends BaseTest {
     @Stories("Negative user registration")
     @Title("New user sign up negative cases")
     @Test(dataProviderClass = DataProviders.class, dataProvider = "registrationAllFieldsEmptyDP")
-    public void signupWithEmptyFields(NewUser newUser) {
+    public void signUpWithEmptyFields(NewUserPredefined newUserPredefined) {
         loadSiteUrl(URL.PROD)
                 .selectLanguage(Language.ENGLISH)
                 .clickSignUpButton()
-                .setYourName(newUser.getUserName())
-                .setCompanyName(newUser.getCompanyName())
-                .setEmail(newUser.getUserEmail())
-                .setPassword(newUser.getUserPassword())
-                .selectTeamSize(newUser.getTeamSize())
-                .selectCompanyIndustry(newUser.getCompanyIndustry())
+                .setYourName(newUserPredefined.getUserName())
+                .setCompanyName(newUserPredefined.getCompanyName())
+                .setEmail(newUserPredefined.getUserEmail())
+                .setPassword(newUserPredefined.getUserPassword())
+                .selectTeamSize(newUserPredefined.getTeamSize())
+                .selectCompanyIndustry(newUserPredefined.getCompanyIndustry())
                 .clickRegisterButton();
 
 

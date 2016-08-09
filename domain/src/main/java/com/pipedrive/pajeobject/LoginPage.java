@@ -35,6 +35,8 @@ public class LoginPage extends BasePage {
 
 	private By labelEmail = By.cssSelector("label[for='login']");
 
+	//-------------------------------------------------
+
 	private LocaleLoader labelsBundle;
 
 	public LoginPage() {

@@ -27,7 +27,7 @@ public class DataProviders {
 	@DataProvider(name = "registrationAllFieldsEmptyDP")
 	public static Iterator<Object[]> registrationAllFieldsEmptyDP() {
 		return Stream.of(
-				new NewUser("", "", "", "", "", "")
+				new NewUserPredefined("", "", "", "", "50+ members", "Consulting")
 				//new NewUser("userName", "", "email", "password", "6-15 members", "Health"),
 				//new NewUser("userName", "companyName", "", "password", "6-15 members", "Health")
 		)

@@ -4,12 +4,14 @@
     <test name="RegisterTest">
         <parameter name="browser" value="firefox"/>
         <classes>
-        <!--    <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginWithRegisteredUserTest">
+        <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginWithRegisteredUserAllErrorsTest">
+         <!--       <methods>
+                        <include name="loginWithEmptyEmailOrPassword"/>
+                </methods>-->
+            </class>
+             <!--<class name="com.pipedrive.testcases.RegisterNewUser.RegisterNewUserAllErrorsTest">
 
             </class>-->
-       <class name="com.pipedrive.testcases.RegisterNewUser.RegisterNewUserAllErrorsTest">
-
-            </class>
         </classes>
     </test>
 </suite>

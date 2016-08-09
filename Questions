@@ -1,3 +1,32 @@
+
+-----------------NEXT------------------------------
+
+- Как получить CSS селекторы
+   пример, LoginPage private By labelEmail = By.cssSelector("label[for='login']")
+
+-  Как проверить URL страницы ( для assert )
+
+- Sign Up Page как лучше сделать селекторы для ошибок, при запуске тестов не находится
+
+- LoginWithRegisteredUserAllErrorsTest  в Allure report : Skipped due to dependency on other skipped or failed test methods
+  ( тест loginWithEmptyEmailOrPassword падает - ожидаемо )
+
+------------------------------------------------------
+- Настройка проверки на мобилках ( локально настроен appium, iOS/Android эмуляторы, могу подключить реальные девайсы )
+
+- Debug
+
+- можно ли и  нужно ли задавать в DataProvider поля предефайненые в sourse ?
+
+- DataProviders разное описание -> разобраться
+  return Stream.of( )
+  ollections.singletonList(new RegisteredUser("shseven@hotmail.com", "TestTest")).stream()
+
+
+
+
+--------------------------
+---------------------------
 1. На  LoginPage одна и та же кнопка Login при разных сценариях ведет на разные страницы.
    Сейчас она у меня рассписана как 2 разные кнопки с разным поведением
    Насколько такой подход правильный?

@@ -8,7 +8,6 @@ import com.pipedrive.pajeobject.LoginPage;
 import com.pipedrive.preset.Error;
 import com.pipedrive.preset.Language;
 import com.pipedrive.preset.URL;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Description;
 import ru.yandex.qatools.allure.annotations.Features;
@@ -24,9 +23,9 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
 
     @Features("Login With Register User all Errors")
     @Stories("Login")
-    @Title("Negative tests")
+    @Title("Login with incorrect email or password")
     @Description("Negative test with incorrect user name/password/incorrect format/spase/empty fields value")
-    @Test(dataProviderClass = DataProviders.class, dataProvider = "incorrectEmailorPassword", enabled = false)
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "incorrectEmailorPassword", enabled = true)
     public void loginWithInvalidCredentials(RegisteredUser registeredUser) {
         loadSiteUrl(URL.PROD)
                 .selectLanguage(Language.ENGLISH)
@@ -35,13 +34,13 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
                 .setRegisteredPassword(registeredUser.getPassword())
                 .clickButtonLogin();
 
-        Assert.assertEquals($(LoginPage.class).getWarningMessageIncorrectEmailOrPassword(), Error.INCORRECT_EMAIL_OR_PASSWORD.toString());
+        getSoftAssert().assertEquals($(LoginPage.class).getWarningMessageIncorrectEmailOrPassword(), Error.INCORRECT_EMAIL_OR_PASSWORD.toString());
     }
 
     @Features("Login With Register User all Errors")
     @Stories("Login")
-    @Title("Login with invalid  email")
-    @Test(dataProviderClass = DataProviders.class, dataProvider = "incorrectEmailFormatDP", enabled = false)
+    @Title("Login with invalid  email format")
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "incorrectEmailFormatDP", enabled = true)
     public void loginWithIncorrectEmailFormat(RegisteredUser registeredUser) {
         loadSiteUrl(URL.PROD)
 				.selectLanguage(Language.ENGLISH)
@@ -50,13 +49,13 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
                 .setRegisteredPassword(registeredUser.getPassword())
                 .clickButtonLogin();
 
-        Assert.assertEquals($(LoginPage.class).getWarningMessageInvalidEmailAddress(), Error.INCORRECT_EMAIL_FORMAT.toString());
+        getSoftAssert().assertEquals($(LoginPage.class).getWarningMessageInvalidEmailAddress(), Error.INCORRECT_EMAIL_FORMAT.toString());
     }
 
     @Features("Login With Register User all Errors")
     @Stories("Login")
 	@Title("Login with empty email or password")
-	@Test (enabled = false)
+	@Test
 	public void loginWithEmptyEmailOrPassword() {
 		loadSiteUrl(URL.PROD)
 				.selectLanguage(Language.ENGLISH)
@@ -65,14 +64,15 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
 				//.setRegisteredPassword(registeredUser.getPassword())
 				.clickButtonLogin();
 
-		Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_EMAIL.toString());
-		Assert.assertEquals($(LoginPage.class).getWarningMessageAddPassword(), Error.EMPTY_PASSWORD.toString());
+		//Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_EMAIL.toString());
+        getSoftAssert().assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_PASSWORD.toString());
+		getSoftAssert().assertEquals($(LoginPage.class).getWarningMessageAddPassword(), Error.EMPTY_PASSWORD.toString());
 	}
 
     @Features("Login With Register User all Errors")
     @Stories("Login")
     @Title("Login with expired user")
-    @Test(dataProviderClass = DataProviders.class, dataProvider = "expiredUserDP")
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "expiredUserDP", enabled = true)
     public void loginWithExpiredUser(RegisteredUser registeredUser){
         loadSiteUrl(URL.PROD)
                 .selectLanguage(Language.ENGLISH)
@@ -81,7 +81,7 @@ public class LoginWithRegisteredUserAllErrorsTest extends BaseTest {
                 .setRegisteredPassword(registeredUser.getPassword())
                 .clickButtonLogin();
 
-        Assert.assertEquals($(BillingAfterTrialPage.class).getWarningMessageThatTrialPeriodEnded(), Error.EXPIRED_USER.toString());
+        getSoftAssert().assertEquals($(BillingAfterTrialPage.class).getWarningMessageThatTrialPeriodEnded(), Error.EXPIRED_USER.toString());
     }
 
 }

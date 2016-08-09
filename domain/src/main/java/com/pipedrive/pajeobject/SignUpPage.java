@@ -1,6 +1,7 @@
 package com.pipedrive.pajeobject;
 
 import com.pipedrive.core.BasePage;
+import com.pipedrive.preset.LocaleLoader;
 import lombok.Getter;
 import org.openqa.selenium.By;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -16,7 +17,7 @@ public class SignUpPage extends BasePage {
     private By selectTeamSize = By.xpath(".//*[@id='register_form']/div[5]/div/select");
     private By selectCompanyIndustry = By.cssSelector(".selectWrapper.industry.icon-chevron-down>select");
     private By inputPromoCode = By.className("promo-code-link");
-    private By buttonSignUpFree = By.id("register_button");
+    private By buttonSignUpFree = By.cssSelector("#register_button");
     private By checkboxSalesTipsAndNews = By.id("optin_news");
 
     private By textWarningAddYourName = By.xpath(".//*[@id='register_form']/div[1]/div");
@@ -26,6 +27,14 @@ public class SignUpPage extends BasePage {
     private By textWarningAddCompanyIndustry = By.xpath(".//*[@id='register_form']/div[6]/div[2]");
 
 	private By labelUsernameError = By.cssSelector("");
+
+    //----------------------------------------------------------
+
+    private LocaleLoader labelsBundle;
+
+    public SignUpPage() {
+        labelsBundle = new LocaleLoader("LabelsBundle", getCurrentLocale());
+    }
 
     //----------------------------------------------------------
 
