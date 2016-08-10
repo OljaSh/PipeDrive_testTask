@@ -3,16 +3,16 @@ package com.pipedrive.testcases.RegisterNewUser;
 import com.pipedrive.core.BaseTest;
 import com.pipedrive.data.DataProviders;
 import com.pipedrive.data.NewUserPredefined;
-import com.pipedrive.pajeobject.LoginPage;
+import com.pipedrive.pajeobject.SignUpPage;
 import com.pipedrive.preset.Error;
 import com.pipedrive.preset.Language;
 import com.pipedrive.preset.URL;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
 
+import static com.pipedrive.preset.BaseVerification.verifyTextEquals;
 import static com.pipedrive.preset.PageObjectSupplier.$;
 import static com.pipedrive.preset.PageObjectSupplier.loadSiteUrl;
 
@@ -43,13 +43,12 @@ public class RegisterNewUserAllErrorsTest extends BaseTest {
                 .selectTeamSize(newUserPredefined.getTeamSize())
                 .selectCompanyIndustry(newUserPredefined.getCompanyIndustry())
                 .clickRegisterButton();
-
-
-        Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_USER_NAME.toString());
-        Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_COMPANY_NAME.toString());
-        Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_EMAIL.toString());
+        
+        verifyTextEquals($(SignUpPage.class).getWarningMessageAddYourName(), Error.EMPTY_USER_NAME.toString(), "Username error text");
+        verifyTextEquals($(SignUpPage.class).getWarningMessageAddCompanyName(), Error.EMPTY_COMPANY_NAME.toString(), "Company error text");
+        /*Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_EMAIL.toString());
         Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_PASSWORD.toString());
-        Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_COMPANY_INDUSTRY.toString());
+        Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_COMPANY_INDUSTRY.toString());*/
 
     }
 }
