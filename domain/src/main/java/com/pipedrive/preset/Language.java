@@ -2,9 +2,6 @@ package com.pipedrive.preset;
 
 import java.util.Locale;
 
-/**
- * Author: Serhii Korol.
- */
 public enum Language {
 
 	ENGLISH("en", Locale.ENGLISH),

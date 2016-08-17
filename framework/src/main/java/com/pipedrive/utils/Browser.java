@@ -7,7 +7,8 @@ public enum Browser {
     FIREFOX("firefox"),
     IE("ie"),
     SAFARI("safari"),
-    ANDROID("android");
+    ANDROID("android"),
+    IPHONE("iphone");
 
     private String name;
 

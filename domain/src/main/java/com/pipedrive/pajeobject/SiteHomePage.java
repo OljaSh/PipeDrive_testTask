@@ -12,10 +12,9 @@ public class SiteHomePage extends BasePage {
 
     private By buttonLogin = By.className("header__navigation__login");
 
-    //private By buttonSignUp = By.className("header__navigation__signup");
     private By buttonSignUp = By.cssSelector(".btn.btn--primary");
 
-    private By selectLanguage = By.xpath(".//*[@id='body']/div/div/div[2]/footer/div[1]/div[3]/div/select");  //className("language-picker__select-box");
+    private By selectLanguage = By.cssSelector(".language-picker__select-box");
 
     @Step("Click on login Button")
     public LoginPage clickLoginButton(){

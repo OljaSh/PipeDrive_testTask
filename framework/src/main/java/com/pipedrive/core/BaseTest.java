@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 import static com.pipedrive.utils.PropertiesUtils.getLongValue;
 
 
+
 public class BaseTest {
 
     private static final ThreadLocal<WebDriver> WEB_DRIVER_CONTAINER = new  ThreadLocal<>();
@@ -55,16 +56,25 @@ public class BaseTest {
                  WebDriverUtils.setIEDriverPath();
                 driver = new InternetExplorerDriver();
                 break;
-            case ANDROID:
+           /* case ANDROID:
                 //ToDo: put into separate method; avoid hardcoding
                 DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setCapability("platformName", "Android");
-                capabilities.setCapability("deviceName", "HT24VW100001");
-                capabilities.setCapability("platformVersion", "4.2.2");
+                capabilities.setCapability("deviceName", "BH90192Z3X");
+                capabilities.setCapability("platformVersion", "5.1.1");
                 capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
                 driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                break;*/
+            case IPHONE:
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setCapability("platformName", "iOS");
+                capabilities.setCapability("deviceName", "iPhone 6");
+                capabilities.setCapability("platformVersion", "9.3");
+                //сapabilities.setCapability("udid", "3cc62452ac1b051878599a3d3211c0e4296294c0");
+               capabilities.setCapability(CapabilityType.BROWSER_NAME, "Safari");
+              // driver = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
                 break;
-            case FIREFOX:
             default:
                 driver = new FirefoxDriver();
                 break;
@@ -73,6 +83,9 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(getLongValue(PropertiesUtils.Constants.WAIT_TIME_SEC), TimeUnit.SECONDS);
         // maximization API is absent on mobile platforms
         if (browser != Browser.ANDROID) {
+            driver.manage().window().maximize();
+        }
+        if (browser != Browser.IPHONE) {
             driver.manage().window().maximize();
         }
         WEB_DRIVER_CONTAINER.set(driver);

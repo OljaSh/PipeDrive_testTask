@@ -22,7 +22,7 @@ public class SignUpPage extends BasePage {
 
     private By textWarningAddYourName = By.cssSelector("#name+div");
     private By textWarningAddCompanyName = By.cssSelector("#company_name+div");
-    private By textWarningAddEmail = By.xpath(".//*[@id='register_form']/div[3]/div[1]");
+    private By textWarningAddEmail = By.xpath("#email+div");
     private By textWarningAddPassword = By.xpath(".//*[@id='register_form']/div[4]/div[2]");
     private By textWarningAddCompanyIndustry = By.xpath(".//*[@id='register_form']/div[6]/div[2]");
 

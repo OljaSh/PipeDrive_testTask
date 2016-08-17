@@ -46,9 +46,8 @@ public class RegisterNewUserAllErrorsTest extends BaseTest {
         
         verifyTextEquals($(SignUpPage.class).getWarningMessageAddYourName(), Error.EMPTY_USER_NAME.toString(), "Username error text");
         verifyTextEquals($(SignUpPage.class).getWarningMessageAddCompanyName(), Error.EMPTY_COMPANY_NAME.toString(), "Company error text");
-        /*Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_EMAIL.toString());
-        Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_PASSWORD.toString());
-        Assert.assertEquals($(LoginPage.class).getWarningMessageAddEmail(), Error.EMPTY_COMPANY_INDUSTRY.toString());*/
-
+        verifyTextEquals($(SignUpPage.class).getWarningMessageAddEmail(), Error.EMPTY_EMAIL.toString(), "Email error text");
+        verifyTextEquals($(SignUpPage.class).getWarningMessageAddPassword(), Error.EMPTY_PASSWORD.toString(), "Password error text");
+        verifyTextEquals($(SignUpPage.class).getWarningMessageAddCompanyIndustry(), Error.EMPTY_COMPANY_INDUSTRY.toString(), "Company industry error text");
     }
 }

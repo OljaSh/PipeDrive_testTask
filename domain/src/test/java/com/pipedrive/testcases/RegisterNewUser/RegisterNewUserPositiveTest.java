@@ -36,9 +36,6 @@ public class RegisterNewUserPositiveTest extends BaseTest{
                 .selectCompanyIndustry(newUser.getCompanyIndustry())
                 .clickRegisterButton();
 
-        //TO DO
-        //Assert that menu is present
-        //Assert by URL
 
         //getSoftAssert().assertEquals($(HomePage.class).getUserName(), $(HomePage.class).getUserName());
         getSoftAssert().assertTrue($(HomePage.class).isElementPresent(), String.valueOf($(HomePage.class).isElementPresent()));
