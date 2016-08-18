@@ -3,13 +3,14 @@ package com.pipedrive.core;
 import com.pipedrive.utils.Browser;
 import com.pipedrive.utils.PropertiesUtils;
 import com.pipedrive.utils.WebDriverUtils;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -65,15 +66,31 @@ public class BaseTest {
                 capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
                 driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
                 break;*/
-            case IPHONE:
+            case IPHONEDEV:
                 DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setCapability("platformName", "iOS");
-                capabilities.setCapability("deviceName", "iPhone 6");
-                capabilities.setCapability("platformVersion", "9.3");
-                //сapabilities.setCapability("udid", "3cc62452ac1b051878599a3d3211c0e4296294c0");
+                capabilities.setCapability(MobileCapabilityType.PLATFORM,"Mac");
+                capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Olja’s 6");
+                capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.3.4");
+                capabilities.setCapability(MobileCapabilityType.UDID, "fc4e4dd6f532577e3b63bf62c47b0e256c29bb44");
+              //  capabilities.setCapability("bundleId", "com.safariLauncher.safariLauncher");
                capabilities.setCapability(CapabilityType.BROWSER_NAME, "Safari");
-              // driver = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-                driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                /*File appDir = new File("/Users/oljashabanova/_dev/Tools//");
+                File app = new File(appDir, "SafariLauncher-master");*/
+               driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                //driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                break;
+            case IPHONEEMU:
+                DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+                desiredCapabilities.setCapability("platformName", "iOS");
+                desiredCapabilities.setCapability("deviceName", "iPhone 5");
+                desiredCapabilities.setCapability("platformVersion", "9.3");
+                //desiredCapabilities.setCapability("bundleId", "com.safariLauncher.safariLauncher");
+                desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME, "Safari");
+                /*File appDir = new File("/Users/oljashabanova/_dev/Tools//");
+                File app = new File(appDir, "SafariLauncher-master");*/
+                driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
+                //driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
                 break;
             default:
                 driver = new FirefoxDriver();
@@ -85,7 +102,7 @@ public class BaseTest {
         if (browser != Browser.ANDROID) {
             driver.manage().window().maximize();
         }
-        if (browser != Browser.IPHONE) {
+        if (browser != Browser.IPHONEDEV) {
             driver.manage().window().maximize();
         }
         WEB_DRIVER_CONTAINER.set(driver);

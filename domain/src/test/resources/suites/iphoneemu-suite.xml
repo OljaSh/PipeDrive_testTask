@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Android - RegisterAndLogin">
     <test name="RegisterTest">
-        <parameter name="browser" value="iphone"/>
+        <parameter name="browser" value="iphoneemu"/>
         <classes>
             <class name="com.pipedrive.testcases.LoginWithRegisteredUser.LoginWithRegisteredUserTest">
             </class>

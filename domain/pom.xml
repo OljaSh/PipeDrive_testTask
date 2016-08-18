@@ -31,7 +31,7 @@
                 </property>
             </activation>
             <properties>
-                <suites>iphone-suite</suites>
+                <suites>iphonedev-suite</suites>
             </properties>
         </profile>
     </profiles>

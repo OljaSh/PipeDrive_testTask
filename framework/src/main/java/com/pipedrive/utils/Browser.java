@@ -8,7 +8,8 @@ public enum Browser {
     IE("ie"),
     SAFARI("safari"),
     ANDROID("android"),
-    IPHONE("iphone");
+    IPHONEDEV("iphonedev"),
+    IPHONEEMU("iphoneemu");
 
     private String name;
 
