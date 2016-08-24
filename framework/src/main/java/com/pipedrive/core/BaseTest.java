@@ -78,7 +78,6 @@ public class BaseTest {
                 /*File appDir = new File("/Users/oljashabanova/_dev/Tools//");
                 File app = new File(appDir, "SafariLauncher-master");*/
                driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-                //driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
                 break;
             case IPHONEEMU:
                 DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -87,10 +86,7 @@ public class BaseTest {
                 desiredCapabilities.setCapability("platformVersion", "9.3");
                 //desiredCapabilities.setCapability("bundleId", "com.safariLauncher.safariLauncher");
                 desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME, "Safari");
-                /*File appDir = new File("/Users/oljashabanova/_dev/Tools//");
-                File app = new File(appDir, "SafariLauncher-master");*/
                 driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
-                //driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
                 break;
             default:
                 driver = new FirefoxDriver();
