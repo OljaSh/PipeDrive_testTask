@@ -16,7 +16,7 @@ public final class WebDriverUtils {
                                         .orElse("linux64"));*/
 
         //System.setProperty("webdriver.chrome.driver", getSystemResource("drivers/" + driverName).getFile());
-        System.setProperty("webdriver.chrome.driver", getSystemResource("drivers/chromedriver_linux64").getFile());
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_linux64");
     }
 
     public static void setIEDriverPath(){
