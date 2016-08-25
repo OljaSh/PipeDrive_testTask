@@ -5,7 +5,6 @@ import org.apache.commons.lang.SystemUtils;
 import java.util.Optional;
 
 import static java.lang.ClassLoader.getSystemResource;
-import  static java.lang.ClassLoader.g
 
 
 public final class WebDriverUtils {
