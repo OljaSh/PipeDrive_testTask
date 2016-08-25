@@ -31,7 +31,7 @@
                 </property>
             </activation>
             <properties>
-                <suites>chrome-suite</suites>
+                <suites>firefox-suite</suites>
             </properties>
         </profile>
     </profiles>
