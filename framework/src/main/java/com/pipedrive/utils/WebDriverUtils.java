@@ -19,7 +19,7 @@ public final class WebDriverUtils {
                                         .map(arch -> "linux32")
                                         .orElse("linux64"));
 
-        System.setProperty("webdriver.chrome.driver", getSystemResource("drivers/" + driverName).getFile());
+        System.setProperty("webdriver.chrome.driver", getSystemResource("/drivers/" + driverName).getFile());
        // System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_linux64");
 
     }
