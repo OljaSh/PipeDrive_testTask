@@ -5,6 +5,7 @@ import org.apache.commons.lang.SystemUtils;
 import java.util.Optional;
 
 import static java.lang.ClassLoader.getSystemResource;
+import  static java.lang.ClassLoader.g
 
 
 public final class WebDriverUtils {
@@ -19,9 +20,9 @@ public final class WebDriverUtils {
                                         .map(arch -> "linux32")
                                         .orElse("linux64"));
 
-        //System.setProperty("webdriver.chrome.driver", getSystemResource("drivers/" +driverName).getFile());
+        System.setProperty("webdriver.chrome.driver", getSystemResource("drivers/" + driverName).getFile());
        // System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_linux64");
-        System.setProperty("webdriver.chrome.driver", getSystemResource(driverName).getFile());
+
     }
 
     public static void setIEDriverPath(){
