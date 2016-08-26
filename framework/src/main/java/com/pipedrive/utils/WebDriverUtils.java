@@ -18,7 +18,7 @@ public final class WebDriverUtils {
                                         .filter(arch -> arch.contains("86"))
                                         .map(arch -> "linux32")
                                         .orElse("linux64"));
-System.setProperty("webdriver.chrome.driver", getSystemResource(driverName).getPath());
+System.setProperty("webdriver.chrome.driver", WebDriverUtils.class.getClassLoader().getResource(driverName).getPath());
         // System.setProperty("webdriver.chrome.driver", getSystemResource("drivers/" + driverName).getFile());
        // System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_linux64");
 
