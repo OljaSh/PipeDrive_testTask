@@ -28,14 +28,14 @@ import static com.pipedrive.utils.PropertiesUtils.getLongValue;
 public class BaseTest {
 
     private static final ThreadLocal<WebDriver> WEB_DRIVER_CONTAINER = new  ThreadLocal<>();
-	private static final ThreadLocal<SoftAssert> SOFT_ASSERT_CONTAINER = new  ThreadLocal<>();
+    private static final ThreadLocal<SoftAssert> SOFT_ASSERT_CONTAINER = new  ThreadLocal<>();
 
     public static WebDriver getDriver(){
         return WEB_DRIVER_CONTAINER.get();
     }
 
     public static SoftAssert getSoftAssert() {
-    	return SOFT_ASSERT_CONTAINER.get();
+        return SOFT_ASSERT_CONTAINER.get();
     }
 
     @BeforeMethod
@@ -43,7 +43,7 @@ public class BaseTest {
     public void setUp(ITestContext context) throws MalformedURLException {
         Browser browser = Browser.getBrowser(context.getCurrentXmlTest().getAllParameters().get("browser"));
         WebDriver driver;
-        
+
 
         switch (browser) {
             case CHROME:
@@ -54,7 +54,7 @@ public class BaseTest {
                 driver = new SafariDriver();
                 break;
             case IE:
-                 WebDriverUtils.setIEDriverPath();
+                WebDriverUtils.setIEDriverPath();
                 driver = new InternetExplorerDriver();
                 break;
            /* case ANDROID:
@@ -66,20 +66,20 @@ public class BaseTest {
                 capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
                 driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
                 break;*/
-            case IPHONEDEV:
+            case IPHONE_DEV:
                 DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setCapability("platformName", "iOS");
                 capabilities.setCapability(MobileCapabilityType.PLATFORM,"Mac");
                 capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Olja’s 6");
                 capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.3.4");
                 capabilities.setCapability(MobileCapabilityType.UDID, "fc4e4dd6f532577e3b63bf62c47b0e256c29bb44");
-              //  capabilities.setCapability("bundleId", "com.safariLauncher.safariLauncher");
-               capabilities.setCapability(CapabilityType.BROWSER_NAME, "Safari");
+                //  capabilities.setCapability("bundleId", "com.safariLauncher.safariLauncher");
+                capabilities.setCapability(CapabilityType.BROWSER_NAME, "Safari");
                 /*File appDir = new File("/Users/oljashabanova/_dev/Tools//");
                 File app = new File(appDir, "SafariLauncher-master");*/
-               driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
                 break;
-            case IPHONEEMU:
+            case IPHONE_EMU:
                 DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
                 desiredCapabilities.setCapability("platformName", "iOS");
                 desiredCapabilities.setCapability("deviceName", "iPhone 5");
@@ -95,14 +95,17 @@ public class BaseTest {
 
         driver.manage().timeouts().implicitlyWait(getLongValue(PropertiesUtils.Constants.WAIT_TIME_SEC), TimeUnit.SECONDS);
         // maximization API is absent on mobile platforms
-        if (browser != Browser.ANDROID) {
+        if (browser != Browser.ANDROID_DEV) {
             driver.manage().window().maximize();
         }
-        if (browser != Browser.IPHONEDEV) {
+        if (browser != Browser.IPHONE_DEV) {
+            driver.manage().window().maximize();
+        }
+        if (browser != Browser.IPHONE_EMU) {
             driver.manage().window().maximize();
         }
         WEB_DRIVER_CONTAINER.set(driver);
-	    SOFT_ASSERT_CONTAINER.set(new SoftAssert());
+        SOFT_ASSERT_CONTAINER.set(new SoftAssert());
     }
 
     @AfterMethod

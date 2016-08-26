@@ -2,6 +2,7 @@ package com.pipedrive.utils;
 
 import org.apache.commons.lang.SystemUtils;
 
+import java.net.URL;
 import java.util.Optional;
 
 import static java.lang.ClassLoader.getSystemResource;
@@ -18,8 +19,13 @@ public final class WebDriverUtils {
                                         .filter(arch -> arch.contains("86"))
                                         .map(arch -> "linux32")
                                         .orElse("linux64"));
-System.setProperty("webdriver.chrome.driver", WebDriverUtils.class.getClassLoader().getResource(driverName).getPath());
-        // System.setProperty("webdriver.chrome.driver", getSystemResource("drivers/" + driverName).getFile());
+
+        // Change this, currently does not work with linux
+       URL driverPath = WebDriverUtils.class.getClassLoader().getResource(driverName);
+        System.setProperty("webdriver.chrome.driver", driverPath.getPath());
+
+
+        //System.setProperty("webdriver.chrome.driver", getSystemResource("drivers/" + driverName).getFile());
        // System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_linux64");
 
     }
