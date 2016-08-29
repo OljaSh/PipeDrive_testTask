@@ -73,7 +73,7 @@ public class BaseTest {
                 capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Olja’s 6");
                 capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.3.4");
                 capabilities.setCapability(MobileCapabilityType.UDID, "fc4e4dd6f532577e3b63bf62c47b0e256c29bb44");
-                //  capabilities.setCapability("bundleId", "com.safariLauncher.safariLauncher");
+                //capabilities.setCapability("bundleId", "com.safariLauncher.safariLauncher");
                 capabilities.setCapability(CapabilityType.BROWSER_NAME, "Safari");
                 /*File appDir = new File("/Users/oljashabanova/_dev/Tools//");
                 File app = new File(appDir, "SafariLauncher-master");*/
