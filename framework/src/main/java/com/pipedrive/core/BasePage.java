@@ -25,7 +25,7 @@ public class BasePage {
 
     private static final Logger LOGGER = Logger.getLogger(BasePage.class.getName());
 
-    public BasePage (){
+    public BasePage () {
         driver = BaseTest.getDriver();
         wait = new WebDriverWait(driver, getLongValue(PropertiesUtils.Constants.DEFAULT_TIMEOUT));
     }

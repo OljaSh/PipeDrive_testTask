@@ -40,7 +40,7 @@ public class BaseTest {
 
     @BeforeMethod
     //@Parameters({"browser"})
-    public void setUp(ITestContext context) throws MalformedURLException {
+    public void setUp(ITestContext context) throws MalformedURLException, InterruptedException {
         Browser browser = Browser.getBrowser(context.getCurrentXmlTest().getAllParameters().get("browser"));
         WebDriver driver;
 
