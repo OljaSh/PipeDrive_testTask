@@ -82,6 +82,9 @@
                                 <chmod file="../framework/target/classes/drivers/chromedriver_mac32" perm="755"/>
                                 <chmod file="../framework/target/classes/drivers/chromedriver_linux32" perm="755"/>
                                 <chmod file="../framework/target/classes/drivers/chromedriver_linux64" perm="755"/>
+                                <chmod file="../domain/target/classes/drivers/chromedriver_mac32" perm="755"/>
+                                <chmod file="../domain/target/classes/drivers/chromedriver_linux32" perm="755"/>
+                                <chmod file="../domain/target/classes/drivers/chromedriver_linux64" perm="755"/>
                             </target>
                         </configuration>
                         <goals>
