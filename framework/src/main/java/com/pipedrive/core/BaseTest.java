@@ -99,9 +99,11 @@ public class BaseTest {
             driver.manage().window().maximize();
         }
         if (browser != Browser.IPHONE_DEV) {
+            Thread.sleep(500);
             driver.manage().window().maximize();
         }
         if (browser != Browser.IPHONE_EMU) {
+            Thread.sleep(500);
             driver.manage().window().maximize();
         }
         WEB_DRIVER_CONTAINER.set(driver);
