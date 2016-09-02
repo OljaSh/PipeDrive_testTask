@@ -31,7 +31,7 @@
                 </property>
             </activation>
             <properties>
-                <suites>iphoneemu-suite</suites>
+                <suites>safari-suite</suites>
             </properties>
         </profile>
     </profiles>
