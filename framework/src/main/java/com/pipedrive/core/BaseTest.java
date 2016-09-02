@@ -29,7 +29,6 @@ public class BaseTest {
 
     private static final ThreadLocal<WebDriver> WEB_DRIVER_CONTAINER = new  ThreadLocal<>();
     private static final ThreadLocal<SoftAssert> SOFT_ASSERT_CONTAINER = new  ThreadLocal<>();
-
     public static WebDriver getDriver(){
         return WEB_DRIVER_CONTAINER.get();
     }
@@ -95,27 +94,28 @@ public class BaseTest {
 
         driver.manage().timeouts().implicitlyWait(getLongValue(PropertiesUtils.Constants.WAIT_TIME_SEC), TimeUnit.SECONDS);
         // maximization API is absent on mobile platforms
-        if (browser != Browser.ANDROID_DEV) {
+        if (browser != Browser.ANDROID_DEV || browser != Browser.IPHONE_DEV  || browser != Browser.IPHONE_EMU) {
             driver.manage().window().maximize();
         }
-        if (browser != Browser.IPHONE_DEV) {
-            Thread.sleep(500);
-            driver.manage().window().maximize();
+
+        if ( browser == Browser.IPHONE_DEV  || browser == Browser.IPHONE_EMU) {
+                   Thread.sleep(2000);
         }
-        if (browser != Browser.IPHONE_EMU) {
-            Thread.sleep(500);
-            driver.manage().window().maximize();
-        }
+
         WEB_DRIVER_CONTAINER.set(driver);
+
         SOFT_ASSERT_CONTAINER.set(new SoftAssert());
     }
 
     @AfterMethod
     public void tearDown(){
         if (getDriver() != null){
+            getDriver().close();
             getDriver().quit();
             WEB_DRIVER_CONTAINER.remove();
+
         }
         SOFT_ASSERT_CONTAINER.remove();
     }
 }
+

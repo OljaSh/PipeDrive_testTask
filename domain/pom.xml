@@ -31,7 +31,7 @@
                 </property>
             </activation>
             <properties>
-                <suites>firefox-suite</suites>
+                <suites>iphoneemu-suite</suites>
             </properties>
         </profile>
     </profiles>
@@ -82,9 +82,6 @@
                                 <chmod file="../framework/target/classes/drivers/chromedriver_mac32" perm="755"/>
                                 <chmod file="../framework/target/classes/drivers/chromedriver_linux32" perm="755"/>
                                 <chmod file="../framework/target/classes/drivers/chromedriver_linux64" perm="755"/>
-                                <chmod file="../domain/target/classes/drivers/chromedriver_mac32" perm="755"/>
-                                <chmod file="../domain/target/classes/drivers/chromedriver_linux32" perm="755"/>
-                                <chmod file="../domain/target/classes/drivers/chromedriver_linux64" perm="755"/>
                             </target>
                         </configuration>
                         <goals>
@@ -98,6 +95,7 @@
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.5.1</version>
             </plugin>
+
         </plugins>
 
         <resources>
