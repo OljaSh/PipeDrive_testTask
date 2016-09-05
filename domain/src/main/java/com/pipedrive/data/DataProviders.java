@@ -23,7 +23,8 @@ public class DataProviders {
 				.iterator();
 	}
 
-	//Data provider for negative Registration test cases
+	//Data provider for negative Registration test case
+
 	@DataProvider(name = "registrationAllFieldsEmptyDP")
 	public static Iterator<Object[]> registrationAllFieldsEmptyDP() {
 		return Stream.of(
@@ -57,7 +58,7 @@ public class DataProviders {
 	public static Iterator<Object[]> positiveLoginDP() {
 	/*	Arrays.asList(new RegisteredUser("sh.olja@gmail.com", "nalT5g8S"),
 				new RegisteredUser("sh.olja@gmail.com", "nalT5g8S")).stream()*/
-		return Collections.singletonList(new RegisteredUser("shseven@hotmail.com", "TestTest")).stream()
+		return Collections.singletonList(new RegisteredUser("shseven@live.com", "test1234")).stream()
 				.map(user -> new Object[]{user})
 				.iterator();
 	}
