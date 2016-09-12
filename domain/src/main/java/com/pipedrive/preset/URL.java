@@ -7,7 +7,7 @@ import java.util.Optional;
 import static com.pipedrive.utils.PropertiesUtils.getStringValue;
 
 
-public enum URL {
+public enum  URL {
 
     PROD(getStringValue(PropertiesUtils.Constants.PROD_URL));
 
