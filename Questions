@@ -1,10 +1,11 @@
 
 -----------------NEXT------------------------------
-- селекторы для SignUpPage textWarningAddPassword/textWarningAddCompanyIndustry
+- //селекторы для SignUpPage textWarningAddPassword/textWarningAddCompanyIndustry
 
 - css selectors - пока не понятно ( http://flukeout.github.io/# )
 
 -  под FireFox не работает выбор языка
+
 - на Android в портретной ориентации экрана не проходит assert по и мени пользователя т.к. имени не видно
   как поступить в этом слечае?
 
@@ -19,6 +20,7 @@
    chromedriver_linux64.
    ( сборка запускается jenkins )
 
+5. Jenkins автосборка билда
 ---------------------------------------------------
 
 - Как получить CSS селекторы

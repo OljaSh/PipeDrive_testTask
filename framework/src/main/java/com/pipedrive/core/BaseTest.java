@@ -5,6 +5,7 @@ import com.pipedrive.utils.PropertiesUtils;
 import com.pipedrive.utils.WebDriverUtils;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -17,6 +18,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 
+import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -47,7 +49,15 @@ public class BaseTest {
         switch (browser) {
             case CHROME:
                 WebDriverUtils.setChromeDriverPath();
+
+                //This code is works, but do FULL SCREEN window (too big)
+             /*   ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--kiosk");
+                driver = new ChromeDriver(chromeOptions);ChromeOptions chromeOptions = new ChromeOptions();*/
+
                 driver = new ChromeDriver();
+                java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                driver.manage().window().setSize(new Dimension(screenSize.width, screenSize.height));
                 break;
             case SAFARI:
                 driver = new SafariDriver();
@@ -77,6 +87,7 @@ public class BaseTest {
                 /*File appDir = new File("/Users/oljashabanova/_dev/Tools//");
                 File app = new File(appDir, "SafariLauncher-master");*/
                 driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                Thread.sleep(5000);
                 break;
             case IPHONE_EMU:
                 DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -86,6 +97,7 @@ public class BaseTest {
                 //desiredCapabilities.setCapability("bundleId", "com.safariLauncher.safariLauncher");
                 desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME, "Safari");
                 driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
+                Thread.sleep(5000);
                 break;
             default:
                 driver = new FirefoxDriver();

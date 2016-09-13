@@ -71,7 +71,9 @@ public class BasePage {
     }
 
 
-
+    public WebDriver getDriver(){
+        return driver;
+    }
 
 
     public boolean isDisplayed(By element) {
