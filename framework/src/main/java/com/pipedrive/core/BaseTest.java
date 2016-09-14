@@ -49,12 +49,6 @@ public class BaseTest {
         switch (browser) {
             case CHROME:
                 WebDriverUtils.setChromeDriverPath();
-
-                //This code is works, but do FULL SCREEN window (too big)
-             /*   ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--kiosk");
-                driver = new ChromeDriver(chromeOptions);ChromeOptions chromeOptions = new ChromeOptions();*/
-
                 driver = new ChromeDriver();
                 java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                 driver.manage().window().setSize(new Dimension(screenSize.width, screenSize.height));
@@ -87,7 +81,7 @@ public class BaseTest {
                 /*File appDir = new File("/Users/oljashabanova/_dev/Tools//");
                 File app = new File(appDir, "SafariLauncher-master");*/
                 driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-                Thread.sleep(5000);
+                Thread.sleep(1000);
                 break;
             case IPHONE_EMU:
                 DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -97,7 +91,7 @@ public class BaseTest {
                 //desiredCapabilities.setCapability("bundleId", "com.safariLauncher.safariLauncher");
                 desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME, "Safari");
                 driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
-                Thread.sleep(5000);
+                Thread.sleep(1000);
                 break;
             default:
                 driver = new FirefoxDriver();
@@ -111,7 +105,7 @@ public class BaseTest {
         }
 
         if ( browser == Browser.IPHONE_DEV  || browser == Browser.IPHONE_EMU) {
-                   Thread.sleep(2000);
+                   Thread.sleep(1000);
         }
 
         WEB_DRIVER_CONTAINER.set(driver);

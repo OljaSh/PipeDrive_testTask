@@ -3,6 +3,7 @@ package com.pipedrive.core;
 
 import com.pipedrive.utils.PropertiesUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -70,6 +71,11 @@ public class BasePage {
         new Select(findElement(element)).selectByValue(text);
     }
 
+    public void scrollTo(By locator) {
+        WebElement element=getDriver().findElement(locator);
+        executeJs("window.scrollTo(0, document.body.scrollHeight)");
+    }
+
 
     public WebDriver getDriver(){
         return driver;
@@ -92,6 +98,13 @@ public class BasePage {
             LOGGER.info("Unable to find " + element);
             return false;
         }
+    }
+
+
+
+    public void executeJs(String command, Object... args){
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript(command,args);
     }
 
 
