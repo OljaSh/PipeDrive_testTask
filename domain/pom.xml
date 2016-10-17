@@ -31,7 +31,7 @@
                 </property>
             </activation>
             <properties>
-                <suites>firefox-suite</suites>
+                <suites>iphoneemu-suite</suites>
             </properties>
         </profile>
     </profiles>
